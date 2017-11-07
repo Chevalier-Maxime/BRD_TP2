@@ -1,5 +1,5 @@
 package main.java
 
-class Scrawler {
+class Crawler {
 
 }
