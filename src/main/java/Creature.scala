@@ -1,3 +1,5 @@
+package creature
+
 import scala.collection.mutable.ArrayBuffer
 
 class Creature(val name: String) extends Serializable {
