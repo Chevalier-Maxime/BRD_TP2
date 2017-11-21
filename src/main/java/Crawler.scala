@@ -4,7 +4,7 @@ import java.net.URL
 
 import creature.Creature
 import org.jsoup.Jsoup
-import org.jsoup.nodes.Element
+import org.jsoup.nodes.{Document, Element}
 import org.jsoup.select.Elements
 
 import scala.collection.JavaConversions._
@@ -12,41 +12,72 @@ import scala.collection.mutable.ListBuffer
 
 class Crawler (URL: URL){
 
-  def processBlock(elementsBetween: ListBuffer[Elements]) = {
-
+  def processBlock(elementsBetween: ListBuffer[Element], nomCreature: String) :Creature = {
+    var blop = gethref(elementsBetween)
+    var c = new Creature(nomCreature)
+    for(element <- blop){
+      if(element.attr("href").contains("/spells/")){
+        System.out.println("Blop") //TODO On a le lien du spell, trouver son nom et ajouter a la créature.
+      }
+    }
+    return c
   }
 
+  def gethref(elementsBetween: ListBuffer[Element]) :ListBuffer[Element] = {
+    var listHref = new ListBuffer[Element]()
+    for(element <- elementsBetween){
+      listHref.addAll(gethrefRec(element))
+    }
+    return listHref
+  }
+
+  def gethrefRec(element: Element) :ListBuffer[Element] = {
+    var elementsBetween = new ListBuffer[Element]()
+    for(child <- element.children()){
+      elementsBetween.addAll(gethrefRec(child))
+    }
+    if(element.attributes().hasKey("href")){
+      elementsBetween.add(element)
+    }
+    return elementsBetween
+  }
+
+
+
+
+
   def crawlerCreaturePage(e: Element) = {
-    //TODO différencier les pages avec un seul monstre et celles avec plusieurs. (via get parent ?) ou via stat-block-title (dans le HTML)
+    //TODO faire entre H1 car c'est un parent en fait ...
     //utiliser ca : https://stackoverflow.com/questions/6534456/jsoup-how-to-get-all-html-between-2-header-tags
     val url = e.child(0).attr("abs:href")
     val doc = Jsoup.connect(url).get()
 
     val firstBlock = doc.select("p.stat-block-title").first()
     val siblings = firstBlock.siblingElements()
-    var elementsBetween : ListBuffer[Elements] = ListBuffer()
+    var elementsBetween = new ListBuffer[Element]()// = ListBuffer()
+    elementsBetween.add(firstBlock)
+    var nomCreature = firstBlock.child(0).childNode(0).toString
 
     var trouve : Boolean = false;
-    for ( i <-1 to siblings.size()) {
-      var sibling = siblings.get(i)
-      if (!((sibling.tag().equals("p")) && (sibling.attr("class").contains("stat-block-title"))) && trouve) {
-        sibling +: elementsBetween
+    for ( i <-0 to siblings.size()-1) {
+      val sibling = siblings.get(i)
+      if (!((sibling.tag().equals("p")) && (sibling.attr("class").contains("stat-block-title"))) ) {
+        elementsBetween.+=:(sibling)
       } else {
-        if (trouve) {
-          processBlock(elementsBetween)
-          elementsBetween = ListBuffer()
-        } else {
-          if ((sibling.attr("class").contains("stat-block-title")) && !trouve) {
-            elementsBetween = ListBuffer()
+          if(!trouve){
+            trouve = true
+          }else{
+            nomCreature = sibling.child(0).childNode(0).toString
           }
-        }
+          processBlock(elementsBetween, nomCreature)
+          elementsBetween = ListBuffer()
       }
     }
     if(!elementsBetween.isEmpty){
-      processBlock(elementsBetween)
+      processBlock(elementsBetween,nomCreature)
     }
 
-
+    System.out.println("Blop")
 
 //    val elements = doc.select("div.body").first()
 //    val nom = elements.select("p.stat-block-title").first().child(0).childNode(0).toString
