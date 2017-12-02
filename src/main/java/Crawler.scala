@@ -52,28 +52,33 @@ class Crawler (URL: URL){
     val url = e.child(0).attr("abs:href")
     val doc = Jsoup.connect(url).get()
 
-    val firstBlock = doc.select("p.stat-block-title").first()
-    val siblings = firstBlock.siblingElements()
+    val firstH1 = doc.select("h1").first()
+    val siblings = firstH1.siblingElements()
     var elementsBetween = new ListBuffer[Element]()// = ListBuffer()
-    elementsBetween.add(firstBlock)
-    var nomCreature = firstBlock.child(0).childNode(0).toString
+    elementsBetween.add(firstH1)
+    var nomCreature: String ="" // = firstH1.child(0).childNode(0).toString
 
     var trouve : Boolean = false;
     for ( i <-0 to siblings.size()-1) {
       val sibling = siblings.get(i)
-      if (!((sibling.tag().equals("p")) && (sibling.attr("class").contains("stat-block-title"))) ) {
+      if (!((sibling.tagName().equals("h1")) ) ) {
         elementsBetween.+=:(sibling)
+        if((sibling.attr("class").contains("stat-block-title"))) {
+          trouve = true
+          nomCreature = sibling.child(0).childNode(0).toString
+        }
       } else {
-          if(!trouve){
-            trouve = true
-          }else{
-            nomCreature = sibling.child(0).childNode(0).toString
+         if(trouve){
+            processBlock(elementsBetween, nomCreature)
+            elementsBetween = ListBuffer()
           }
-          processBlock(elementsBetween, nomCreature)
-          elementsBetween = ListBuffer()
+        else{
+           elementsBetween = ListBuffer()
+         }
+        trouve = false
       }
     }
-    if(!elementsBetween.isEmpty){
+    if(!elementsBetween.isEmpty && trouve){
       processBlock(elementsBetween,nomCreature)
     }
 
