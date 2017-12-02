@@ -1,26 +1,47 @@
 package main.java
 
+import java.io.{File, PrintWriter}
 import java.net.URL
 
 import creature.Creature
+import org.json4s.JsonAST.JObject
 import org.jsoup.Jsoup
 import org.jsoup.nodes.{Document, Element}
 import org.jsoup.select.Elements
 
 import scala.collection.JavaConversions._
 import scala.collection.mutable.ListBuffer
+import scala.util.matching.Regex
+import net.liftweb.json._
+import net.liftweb.json.JsonDSL._
 
 class Crawler (URL: URL){
 
-  def processBlock(elementsBetween: ListBuffer[Element], nomCreature: String) :Creature = {
+  var file: String = "creatures.json"
+  val writer = new PrintWriter(new File(file))
+  var collection = new ListBuffer[Creature]()
+
+  def writeFile() = {
+    val json = (
+      ("creatures" -> collection.map {
+        c => c.toJson()
+      })
+    )
+    writer.write(compact(render(json)))
+  }
+
+  def processBlock(elementsBetween: ListBuffer[Element], nomCreature: String) = {
     var blop = gethref(elementsBetween)
     var c = new Creature(nomCreature)
     for(element <- blop){
       if(element.attr("href").contains("/spells/")){
-        System.out.println("Blop") //TODO On a le lien du spell, trouver son nom et ajouter a la créature.
+        val pattern = new Regex("([#])\\w+")
+        val url = (element.attr("href").split("/").last)
+        val nom = url.split("\\."){0}
+        c.addspell(nom)
       }
     }
-    return c
+    collection.add(c)
   }
 
   def gethref(elementsBetween: ListBuffer[Element]) :ListBuffer[Element] = {
@@ -47,7 +68,6 @@ class Crawler (URL: URL){
 
 
   def crawlerCreaturePage(e: Element) = {
-    //TODO faire entre H1 car c'est un parent en fait ...
     //utiliser ca : https://stackoverflow.com/questions/6534456/jsoup-how-to-get-all-html-between-2-header-tags
     val url = e.child(0).attr("abs:href")
     val doc = Jsoup.connect(url).get()
@@ -65,7 +85,13 @@ class Crawler (URL: URL){
         elementsBetween.+=:(sibling)
         if((sibling.attr("class").contains("stat-block-title"))) {
           trouve = true
-          nomCreature = sibling.child(0).childNode(0).toString
+          try {
+            nomCreature = sibling.child(0).childNode(0).toString
+          }catch { //Animaux compagnons
+            case _: Throwable => println(url)
+              elementsBetween = ListBuffer()
+              trouve = false
+          }
         }
       } else {
          if(trouve){
@@ -81,21 +107,6 @@ class Crawler (URL: URL){
     if(!elementsBetween.isEmpty && trouve){
       processBlock(elementsBetween,nomCreature)
     }
-
-    System.out.println("Blop")
-
-//    val elements = doc.select("div.body").first()
-//    val nom = elements.select("p.stat-block-title").first().child(0).childNode(0).toString
-//    val creature = new Creature(nom)
-//
-//    for(child <- elements.select("a[href]")){
-//      if(child.attr("href").contains("/spells/")){
-//        System.out.println("Blop") //TODO On a le lien du spell, trouver son nom et ajouter a la créature.
-//      }
-//    }
-
-
-
   }
 
   def crawlerOnThisLetter(elements: Elements) = {
@@ -114,10 +125,9 @@ class Crawler (URL: URL){
       if(e.tagName().equals("ul")){
         crawlerOnThisLetter(e.children())
       }
-      System.out.println("Blop")
     }
-    System.out.println("Blop")
 
+    writeFile()
 
   }
 

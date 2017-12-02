@@ -15,5 +15,13 @@
             <artifactId>jsoup</artifactId>
             <version>1.11.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.liftweb/lift-json -->
+        <dependency>
+            <groupId>net.liftweb</groupId>
+            <artifactId>lift-json_2.11</artifactId>
+            <version>2.6.3</version>
+        </dependency>
+
     </dependencies>
 </project>
