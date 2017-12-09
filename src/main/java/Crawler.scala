@@ -76,7 +76,7 @@ class Crawler (URL: URL){
     val siblings = firstH1.siblingElements()
     var elementsBetween = new ListBuffer[Element]()// = ListBuffer()
     elementsBetween.add(firstH1)
-    var nomCreature: String ="" // = firstH1.child(0).childNode(0).toString
+    var nomCreature: String = firstH1.text()
 
     var trouve : Boolean = false;
     for ( i <-0 to siblings.size()-1) {
@@ -85,13 +85,13 @@ class Crawler (URL: URL){
         elementsBetween.+=:(sibling)
         if((sibling.attr("class").contains("stat-block-title"))) {
           trouve = true
-          try {
-            nomCreature = sibling.child(0).childNode(0).toString
+          /*try {
+            nomCreature = nomCreature + sibling.child(0).childNode(0).toString
           }catch { //Animaux compagnons
             case _: Throwable => println(url)
               elementsBetween = ListBuffer()
               trouve = false
-          }
+          }*/
         }
       } else {
          if(trouve){
@@ -101,6 +101,7 @@ class Crawler (URL: URL){
         else{
            elementsBetween = ListBuffer()
          }
+        nomCreature = sibling.text()
         trouve = false
       }
     }

@@ -71,4 +71,6 @@ object Main extends App {
 
     exercice1();
 
+  println("Fin Exercice 1");
+
 }

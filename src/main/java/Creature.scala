@@ -6,7 +6,7 @@ import net.liftweb.json._
 import net.liftweb.json.JsonDSL._
 
 class Creature(val name: String) extends Serializable {
-  var spells = ArrayBuffer[String]()
+  var spells = scala.collection.mutable.Set[String]()
 
   def addspell(spell: String): Unit = {
     spells += spell
