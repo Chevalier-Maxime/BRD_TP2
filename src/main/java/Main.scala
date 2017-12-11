@@ -1,16 +1,21 @@
 import java.io.{File, PrintWriter}
 import java.net.URL
 
-import main.java.Crawler
+import exercice1.Crawler
+import exercice2._
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
+import org.apache.spark.graphx.{Edge, Graph, VertexId, VertexRDD}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.rdd.RDD._
 import spire.std.map
 
+import scala.collection.mutable.ArrayBuffer
+
 object Main extends App {
 
-    val conf = new SparkConf()
+
+  val conf = new SparkConf()
       .setAppName("BDR TP2")
       .setMaster("local[*]")
     val sc = new SparkContext(conf)
@@ -65,12 +70,307 @@ object Main extends App {
 
         writer.close()
 
+        println("Fin Exercice 1");
     }
 
 
+    //def mergeMessage
+    def exercice2Partie1() : Unit = {
+        val monstres: RDD[(VertexId,Monstre)] =
+            sc.parallelize(Array(
+                (1L,new AngelSolar(new Position(1,5),1)),
+                (2L,new WorgsRider(new Position(111,9),2)),
+                (3L,new WorgsRider(new Position(111,8),2)),
+                (4L,new WorgsRider(new Position(111,7),2)),
+                (5L,new WorgsRider(new Position(111,6),2)),
+                (6L,new WorgsRider(new Position(111,5),2)),
+                (7L,new WorgsRider(new Position(111,4),2)),
+                (8L,new WorgsRider(new Position(111,3),2)),
+                (9L,new WorgsRider(new Position(111,2),2)),
+                (10L,new WorgsRider(new Position(111,1),2)),
+                (11L,new BarbareOrc(new Position(120,7),2)),
+                (12L,new BarbareOrc(new Position(120,6),2)),
+                (13L,new BarbareOrc(new Position(120,4),2)),
+                (14L,new BarbareOrc(new Position(120,3),2)),
+                (15L,new LeWarlord(new Position(125,5),2))
+            ))
 
-    exercice1();
+        val vertex: RDD[Edge[EdgeProperty]] =
+            sc.parallelize(Array(
+                //Solar
+                Edge(1L, 2L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 3L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 4L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 5L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 6L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 7L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 8L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 9L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 10L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 11L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 12L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 13L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 14L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(1L, 15L, new EdgeProperty(TypeRelation.ENEMY)),
 
-  println("Fin Exercice 1");
+                //WorgRider1
+                Edge(2L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(2L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(2L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //WorgRider2
+                Edge(3L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(3L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(3L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //WorgRider3
+                Edge(4L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(4L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(4L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //WorgRider4
+                Edge(5L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(5L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(5L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //WorgRider5
+                Edge(6L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(6L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(6L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //WorgRider6
+                Edge(7L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(7L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(7L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //WorgRider7
+                Edge(8L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(8L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(8L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //WorgRider8
+                Edge(9L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(9L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(9L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //WorgRider9
+                Edge(10L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(10L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(10L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //BarbarOrc1
+                Edge(11L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(11L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(11L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //BarbarOrc2
+                Edge(12L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(12L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(12L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //BarbarOrc3
+                Edge(13L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(13L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(13L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //BarbarOrc4
+                Edge(14L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(14L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 9L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(14L, 15L, new EdgeProperty(TypeRelation.FRIEND)),
+                //Warlord 1
+                Edge(15L, 1L, new EdgeProperty(TypeRelation.ENEMY)),
+                Edge(15L, 2L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 4L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 5L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 6L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 7L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 8L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 3L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 10L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 11L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 12L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 13L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 14L, new EdgeProperty(TypeRelation.FRIEND)),
+                Edge(15L, 9L, new EdgeProperty(TypeRelation.FRIEND))
+            ))
+
+        var graph = Graph(monstres,vertex)
+
+        val actionTodo: VertexRDD[ArrayBuffer[msg]] = graph.aggregateMessages[ArrayBuffer[msg]](
+            triplet =>{
+              triplet.srcAttr.actionPossible(triplet)
+            },
+            (msg1,msg2) => msg1 ++ msg2
+        )
+
+      //Choix des actions
+      graph = graph.joinVertices(actionTodo)(
+        (vid, monstres, msgs) => monstres.choisirAction(vid,monstres,msgs)
+      )
+
+      var res = graph.vertices.take(0)
+      for(i <- 1 to graph.numVertices.toInt){
+        res = graph.vertices.take(i)
+      }
+      val executerLesAction:VertexRDD[ArrayBuffer[msg]] = graph.aggregateMessages[ArrayBuffer[msg]](
+        triplet =>{
+          triplet.srcAttr.executeAction(triplet)
+        },
+        (msg1,msg2) => msg1 ++ msg2
+      )
+
+      graph = graph.joinVertices(executerLesAction)(
+        (vid,monstres,msgs) => monstres.receptionnerAction(vid,monstres,msgs)
+      )
+
+      val res2 = graph.vertices.take(2)
+      //Faire un join Vertices TODO
+        /*val actionDeChaqueNoeud: VertexRDD[String] =
+            actionTodo.mapValues(
+                (id, msg) => msg.actionType match {
+                    case TypeAction.HEAL => id + " peux heal" + msg.id
+                    case TypeAction.ATTAQUE => id + "peux attaquer " + msg.id
+                }
+
+            )
+
+        actionDeChaqueNoeud.collect().foreach(println(_))*/
+    }
+
+    exercice2Partie1()
+    //exercice1();
+
+
 
 }

@@ -1,19 +1,17 @@
-package main.java
+package exercice1
 
 import java.io.{File, PrintWriter}
 import java.net.URL
 
-import creature.Creature
-import org.json4s.JsonAST.JObject
+import net.liftweb.json.JsonDSL._
+import net.liftweb.json._
 import org.jsoup.Jsoup
-import org.jsoup.nodes.{Document, Element}
+import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
 import scala.collection.JavaConversions._
 import scala.collection.mutable.ListBuffer
 import scala.util.matching.Regex
-import net.liftweb.json._
-import net.liftweb.json.JsonDSL._
 
 class Crawler (URL: URL){
 
