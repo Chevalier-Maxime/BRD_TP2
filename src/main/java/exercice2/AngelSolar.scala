@@ -43,6 +43,12 @@ class AngelSolar(
     }
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
+
+
+    var retttt : Monstre = monstres
+    retttt.setNextAction(vid,TypeAction.MOVE)
+    return retttt
+
     var nbDemandeHeal = 0
     var vertexIdAllierEnPLS : VertexId = -1
     //Si demande de Heal
@@ -54,10 +60,10 @@ class AngelSolar(
         case _ =>
       })
       if(nbDemandeHeal == 1){
-        this.nextAction = (vertexIdAllierEnPLS,TypeAction.HEAL)
+        this.nextAction = prochaineAction(vertexIdAllierEnPLS,TypeAction.HEAL)
         return this
       }else if(nbDemandeHeal > 3){
-        this.nextAction = (-1,TypeAction.HEAL)
+        this.nextAction = prochaineAction(-1,TypeAction.HEAL)
         return this
       }
     }
@@ -72,7 +78,7 @@ class AngelSolar(
     findAttaque
 
     if(vertexIdPremierMonstre != -1){
-      this.nextAction = (vertexIdPremierMonstre,TypeAction.ATTAQUE)
+      this.nextAction = prochaineAction(vertexIdPremierMonstre,TypeAction.ATTAQUE)
       return this
     }
 
@@ -90,7 +96,7 @@ class AngelSolar(
     })
 
     if(distanceMechantLePlusProche != Double.MaxValue){
-      this.nextAction=(vertexIdMechantLePLusProche,TypeAction.MOVE)
+      this.nextAction=prochaineAction(vertexIdMechantLePLusProche,TypeAction.MOVE)
     }
     return this
 
@@ -126,6 +132,10 @@ class WorgsRider(
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
+    var retttt : Monstre = monstres
+    retttt.setNextAction(vid,TypeAction.MOVE)
+    return retttt
+
     var vertexIdPremierMonstre : VertexId = -1
     def findAttaque() {msgs.foreach(message => message.actionType match {
       case TypeAction.ATTAQUE => vertexIdPremierMonstre = message.idDest; return
@@ -134,7 +144,7 @@ class WorgsRider(
 
     findAttaque()
     if(vertexIdPremierMonstre != -1){
-      this.nextAction = (vertexIdPremierMonstre,TypeAction.ATTAQUE)
+      this.nextAction = prochaineAction(vertexIdPremierMonstre,TypeAction.ATTAQUE)
       return this
     }
 
@@ -152,7 +162,7 @@ class WorgsRider(
     })
 
     if(distanceMechantLePlusProche != Double.MaxValue){
-      this.nextAction=(vertexIdMechantLePLusProche,TypeAction.MOVE)
+      this.nextAction=prochaineAction(vertexIdMechantLePLusProche,TypeAction.MOVE)
     }
     return this
   }
@@ -183,6 +193,10 @@ class LeWarlord(
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
+    var retttt : Monstre = monstres
+    retttt.setNextAction(vid,TypeAction.MOVE)
+    return retttt
+
     var vertexIdPremierMonstre : VertexId = -1
     def findAttaque {msgs.foreach(message => message.actionType match {
       case TypeAction.ATTAQUE => vertexIdPremierMonstre = message.idDest; return
@@ -191,7 +205,7 @@ class LeWarlord(
 
     findAttaque
     if(vertexIdPremierMonstre != -1){
-      this.nextAction = (vertexIdPremierMonstre,TypeAction.ATTAQUE)
+      this.nextAction = prochaineAction(vertexIdPremierMonstre,TypeAction.ATTAQUE)
       return this
     }
 
@@ -209,7 +223,7 @@ class LeWarlord(
     })
 
     if(distanceMechantLePlusProche != Double.MaxValue){
-      this.nextAction=(vertexIdMechantLePLusProche,TypeAction.MOVE)
+      this.nextAction=prochaineAction(vertexIdMechantLePLusProche,TypeAction.MOVE)
     }
     return this
   }
@@ -239,6 +253,10 @@ class BarbareOrc(
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
+    var retttt : Monstre = monstres
+    retttt.setNextAction(vid,TypeAction.MOVE)
+    return retttt
+
     var vertexIdPremierMonstre : VertexId = -1
     def findAttaque {msgs.foreach(message => message.actionType match {
       case TypeAction.ATTAQUE => vertexIdPremierMonstre = message.idDest; return
@@ -247,7 +265,7 @@ class BarbareOrc(
 
     findAttaque
     if(vertexIdPremierMonstre != -1){
-      this.nextAction = (vertexIdPremierMonstre,TypeAction.ATTAQUE)
+      this.nextAction = prochaineAction(vertexIdPremierMonstre,TypeAction.ATTAQUE)
       return this
     }
 
@@ -265,7 +283,7 @@ class BarbareOrc(
     })
 
     if(distanceMechantLePlusProche != Double.MaxValue){
-      this.nextAction=(vertexIdMechantLePLusProche,TypeAction.MOVE)
+      this.nextAction= new prochaineAction(vertexIdMechantLePLusProche,TypeAction.MOVE)
     }
     return this
   }

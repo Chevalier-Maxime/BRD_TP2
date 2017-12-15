@@ -6,4 +6,10 @@ class Position(var x: Int, var y:Int) extends Serializable {
     this.x = x;
     this.y = y
   }
+
+  override def toString: String = {
+    this.x + " " + this.y
+  }
+
+
 }

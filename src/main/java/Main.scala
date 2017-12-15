@@ -17,7 +17,7 @@ object Main extends App {
 
   val conf = new SparkConf()
       .setAppName("BDR TP2")
-      .setMaster("local[*]")
+      .setMaster("local[1]")
     val sc = new SparkContext(conf)
     sc.setLogLevel("ERROR")
 
@@ -325,7 +325,9 @@ object Main extends App {
                 Edge(15L, 9L, new EdgeProperty(TypeRelation.FRIEND))
             ))
 
-        var graph = Graph(monstres,vertex)
+        val graph = Graph(monstres,vertex)
+
+        graph.vertices.collect().foreach(println)
 
         val actionTodo: VertexRDD[ArrayBuffer[msg]] = graph.aggregateMessages[ArrayBuffer[msg]](
             triplet =>{
@@ -334,27 +336,31 @@ object Main extends App {
             (msg1,msg2) => msg1 ++ msg2
         )
 
+
+      val ttt = actionTodo.collect().foreach(println)
+
+
       //Choix des actions
-      graph = graph.joinVertices(actionTodo)(
+      val graph2 = graph.joinVertices(actionTodo)(
         (vid, monstres, msgs) => monstres.choisirAction(vid,monstres,msgs)
       )
 
-      var res = graph.vertices.take(0)
-      for(i <- 1 to graph.numVertices.toInt){
-        res = graph.vertices.take(i)
-      }
-      val executerLesAction:VertexRDD[ArrayBuffer[msg]] = graph.aggregateMessages[ArrayBuffer[msg]](
+      var res = graph2.vertices.take(graph.numVertices.toInt)
+
+      graph.vertices.collect().foreach(println)
+
+      val executerLesAction:VertexRDD[ArrayBuffer[msg]] = graph2.aggregateMessages[ArrayBuffer[msg]](
         triplet =>{
           triplet.srcAttr.executeAction(triplet)
         },
         (msg1,msg2) => msg1 ++ msg2
       )
 
-      graph = graph.joinVertices(executerLesAction)(
+      val graph3 = graph2.joinVertices(executerLesAction)(
         (vid,monstres,msgs) => monstres.receptionnerAction(vid,monstres,msgs)
       )
 
-      val res2 = graph.vertices.take(2)
+      val res2 = graph3.vertices.take(2)
       //Faire un join Vertices TODO
         /*val actionDeChaqueNoeud: VertexRDD[String] =
             actionTodo.mapValues(
