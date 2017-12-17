@@ -9,12 +9,13 @@ abstract class Monstre(
                       position:Position,
                       nom:String,
                       equipe:Int,
-                      PDVmax:Int
+                      PDVmax:Int,
+                      Lvl:Int
                       ) extends Serializable {
 
-  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]): _root_.exercice2.Monstre = {
+  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
     var messagePrint = "Moi "+nom+"@"+vid+" recoit les differentes actions :"
-    msgs.foreach(message => message.getType() match {
+    msgs.foreach(message => message.getActionType() match {
       case TypeAction.MOVE => messagePrint += "MOVE ";
       case TypeAction.ATTAQUE => messagePrint +="ATTAQUE ";
       case TypeAction.HEAL => messagePrint += "SOIN"
@@ -28,28 +29,32 @@ abstract class Monstre(
 def getNom() : String = {
   this.nom
 }
+  def getLvl() : Int = {
+    this.Lvl
+  }
   def getEquipe() :Int = {
     this.equipe
   }
 
   //TODO Changer le type de message
-  def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]): Unit = {
+  def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit = {
     println(this + " VID Enregistre = " + triplet.dstId + ", cible : "+nextAction.vertexId)
     //var (id, actionType) = this.nextAction
     if(triplet.dstId == nextAction.vertexId){
       nextAction.typeAction match {
         case TypeAction.HEAL => println( triplet.srcId + " heal " + triplet.dstId)
-          val m = new ArrayBuffer[msg]()
-          m.append(new msg(TypeAction.HEAL,triplet.srcId,triplet.dstAttr.getPosition()));
+          val m = new ArrayBuffer[message2]()
+          //m.append(new msg(TypeAction.HEAL,triplet.srcId,triplet.dstAttr.getPosition()));
+          m.append(new  heal(triplet.srcAttr.getLvl(),10))
           triplet.sendToSrc(m)
         case TypeAction.MOVE => println(triplet.srcId + " se deplace vers " + triplet.dstId);
           //TODO Move
-          val m = new ArrayBuffer[msg]()
+          /*val m = new ArrayBuffer[msg]()
           m.append(new msg(TypeAction.MOVE,triplet.srcId,triplet.dstAttr.getPosition()));
-          triplet.sendToSrc(m)
+          triplet.sendToSrc(m)*/
         case TypeAction.ATTAQUE => println(triplet.srcId + " attaque " + triplet.dstId)
-          val m = new ArrayBuffer[msg]()
-          m.append(new msg(TypeAction.ATTAQUE,triplet.srcId,triplet.dstAttr.getPosition()));
+          val m = new ArrayBuffer[message2]()
+          m.append(new attaque());
           triplet.sendToSrc(m)
       }
     }

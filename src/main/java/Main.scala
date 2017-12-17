@@ -78,21 +78,21 @@ object Main extends App {
     def exercice2Partie1() : Unit = {
         val monstres: RDD[(VertexId,Monstre)] =
             sc.parallelize(Array(
-                (1L,new AngelSolar(new Position(1,5),1)),
-                (2L,new WorgsRider(new Position(111,9),2)),
-                (3L,new WorgsRider(new Position(111,8),2)),
-                (4L,new WorgsRider(new Position(111,7),2)),
-                (5L,new WorgsRider(new Position(111,6),2)),
-                (6L,new WorgsRider(new Position(111,5),2)),
-                (7L,new WorgsRider(new Position(111,4),2)),
-                (8L,new WorgsRider(new Position(111,3),2)),
-                (9L,new WorgsRider(new Position(111,2),2)),
-                (10L,new WorgsRider(new Position(111,1),2)),
-                (11L,new BarbareOrc(new Position(120,7),2)),
-                (12L,new BarbareOrc(new Position(120,6),2)),
-                (13L,new BarbareOrc(new Position(120,4),2)),
-                (14L,new BarbareOrc(new Position(120,3),2)),
-                (15L,new LeWarlord(new Position(125,5),2))
+                (1L,new AngelSolar(new Position(1,5),1,15)),
+                (2L,new WorgsRider(new Position(111,9),2,10)),
+                (3L,new WorgsRider(new Position(111,8),2,9)),
+                (4L,new WorgsRider(new Position(111,7),2,5)),
+                (5L,new WorgsRider(new Position(111,6),2,3)),
+                (6L,new WorgsRider(new Position(111,5),2,12)),
+                (7L,new WorgsRider(new Position(111,4),2,11)),
+                (8L,new WorgsRider(new Position(111,3),2,5)),
+                (9L,new WorgsRider(new Position(111,2),2,6)),
+                (10L,new WorgsRider(new Position(111,1),2,1)),
+                (11L,new BarbareOrc(new Position(120,7),2,8)),
+                (12L,new BarbareOrc(new Position(120,6),2,7)),
+                (13L,new BarbareOrc(new Position(120,4),2,12)),
+                (14L,new BarbareOrc(new Position(120,3),2,13)),
+                (15L,new LeWarlord(new Position(125,5),2,15))
             ))
 
         val vertex: RDD[Edge[EdgeProperty]] =
@@ -349,7 +349,7 @@ object Main extends App {
 
       graph2.vertices.collect().foreach(println)
 
-      val executerLesAction:VertexRDD[ArrayBuffer[msg]] = graph2.aggregateMessages[ArrayBuffer[msg]](
+      val executerLesAction:VertexRDD[ArrayBuffer[message2]] = graph2.aggregateMessages[ArrayBuffer[message2]](
         triplet =>{
           triplet.srcAttr.executeAction(triplet)
         },

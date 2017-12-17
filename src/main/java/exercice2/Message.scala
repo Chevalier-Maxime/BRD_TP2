@@ -14,3 +14,23 @@ case class msg(var actionType : TypeAction, var idDest : VertexId, var posSrc:Po
     return actionType
   }
 }
+
+abstract class message2 (actionType : TypeAction){
+  def getActionType() : TypeAction ={
+    return actionType
+  }
+}
+
+case class heal(var Lvl : Int, var multiplicateur : Int) extends message2 (TypeAction.HEAL){
+
+  def getLvl() : Int ={
+    return Lvl
+  }
+  def getMultiplicateur : Int ={
+    return  multiplicateur
+  }
+
+}
+case class attaque() extends message2 (TypeAction.ATTAQUE){
+
+}
