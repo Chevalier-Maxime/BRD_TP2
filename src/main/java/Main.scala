@@ -347,7 +347,7 @@ object Main extends App {
 
       var res = graph2.vertices.take(graph.numVertices.toInt)
 
-      graph.vertices.collect().foreach(println)
+      graph2.vertices.collect().foreach(println)
 
       val executerLesAction:VertexRDD[ArrayBuffer[msg]] = graph2.aggregateMessages[ArrayBuffer[msg]](
         triplet =>{
@@ -355,6 +355,9 @@ object Main extends App {
         },
         (msg1,msg2) => msg1 ++ msg2
       )
+
+
+        executerLesAction.collect().foreach(println)
 
       val graph3 = graph2.joinVertices(executerLesAction)(
         (vid,monstres,msgs) => monstres.receptionnerAction(vid,monstres,msgs)

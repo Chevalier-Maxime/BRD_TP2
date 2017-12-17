@@ -28,10 +28,13 @@ abstract class Monstre(
 def getNom() : String = {
   this.nom
 }
+  def getEquipe() :Int = {
+    this.equipe
+  }
 
   //TODO Changer le type de message
   def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]): Unit = {
-    println(this)
+    println(this + " VID Enregistre = " + triplet.dstId + ", cible : "+nextAction.vertexId)
     //var (id, actionType) = this.nextAction
     if(triplet.dstId == nextAction.vertexId){
       nextAction.typeAction match {
