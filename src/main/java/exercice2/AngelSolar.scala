@@ -6,9 +6,9 @@ import org.apache.spark.graphx.{EdgeContext, VertexId}
 import scala.collection.mutable.ArrayBuffer
 
 case class AngelSolar(
-                  var position:Position,
-                  equipe:Int,
-                  Lvl:Int
+                       override var position:Position,
+                       equipe:Int,
+                       Lvl:Int
                 ) extends Monstre(position,"Angel Solar",equipe,100,Lvl,150) {
 
 
@@ -154,7 +154,7 @@ class WorgsRider(
                   position:Position,
                   equipe:Int,
                   Lvl:Int
-                ) extends Monstre(position,"Worgs Rider",equipe,100,Lvl) {
+                ) extends Monstre(position,"Worgs Rider",equipe,100,Lvl,60) {
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) : Unit = {
     //Si ennemi
@@ -215,7 +215,7 @@ class LeWarlord(
                   position:Position,
                   equipe:Int,
                   Lvl:Int
-                ) extends Monstre(position,"Le Warlord",equipe,100,Lvl) {
+                ) extends Monstre(position,"Le Warlord",equipe,100,Lvl,90) {
 
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) = {
@@ -276,7 +276,7 @@ class BarbareOrc(
                  position:Position,
                  equipe:Int,
                  Lvl:Int
-               ) extends Monstre(position,"Barbare Orc",equipe,100,Lvl) {
+               ) extends Monstre(position,"Barbare Orc",equipe,100,Lvl,120) {
 
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) = {
