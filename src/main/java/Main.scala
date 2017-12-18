@@ -325,124 +325,79 @@ object Main extends App {
                 Edge(15L, 9L, new EdgeProperty(TypeRelation.FRIEND))
             ))
 
-        val graph = Graph(monstres,vertex)
+        var graph = Graph(monstres,vertex)
 
 
-      println("------------------------------------------------------------------------------")
-      println("                        ETAT  INITIAL                                         ")
-      println("------------------------------------------------------------------------------")
+        def executionDeLalgorithme() : Unit = {
+          while (true){
+            println("------------------------------------------------------------------------------")
+            println("                        ETAT  INITIAL                                         ")
+            println("------------------------------------------------------------------------------")
 
-        graph.vertices.collect().foreach(println)
-
-        val actionTodo: VertexRDD[ArrayBuffer[msg]] = graph.aggregateMessages[ArrayBuffer[msg]](
-            triplet =>{
-              triplet.srcAttr.actionPossible(triplet)
-            },
-            (msg1,msg2) => msg1 ++ msg2
-        )
+            graph.vertices.collect().foreach(println)
 
 
-      println("------------------------------------------------------------------------------")
-      println("                        ACTIONS POSSIBLES                                     ")
-      println("------------------------------------------------------------------------------")
 
-      val ttt = actionTodo.collect().foreach(println)
+            var actionTodo: VertexRDD[ArrayBuffer[msg]] = graph.aggregateMessages[ArrayBuffer[msg]](
+              triplet =>{
+                triplet.srcAttr.actionPossible(triplet)
+              },
+              (msg1,msg2) => msg1 ++ msg2
+            )
 
-
-      //Choix des actions
-      val graph2 = graph.joinVertices(actionTodo)(
-        (vid, monstres, msgs) => monstres.choisirAction(vid,monstres,msgs)
-      )
-
-      var res = graph2.vertices.take(graph2.numVertices.toInt)
-
-      println("------------------------------------------------------------------------------")
-      println("                       CHOIX ACTION                                      ")
-      println("------------------------------------------------------------------------------")
-
-      graph2.vertices.collect().foreach(println)
-
-      val executerLesAction:VertexRDD[ArrayBuffer[message2]] = graph2.aggregateMessages[ArrayBuffer[message2]](
-        triplet =>{
-          triplet.srcAttr.executeAction(triplet)
-        },
-        (msg1,msg2) => msg1 ++ msg2
-      )
+            //Condition d'arret
+            if(actionTodo.collect().length == 0) return
 
 
-      println("------------------------------------------------------------------------------")
-      println("                        EXECUTE ACTIONS                                     ")
-      println("------------------------------------------------------------------------------")
-        executerLesAction.collect().foreach(println)
+            println("------------------------------------------------------------------------------")
+            println("                        ACTIONS POSSIBLES                                     ")
+            println("------------------------------------------------------------------------------")
 
-      val graph3 = graph2.joinVertices(executerLesAction)(
-        (vid,monstres,msgs) => monstres.receptionnerAction(vid,monstres,msgs)
-      )
-
-      println("------------------------------------------------------------------------------")
-      println("                        RECEPTION ACTION                                     ")
-      println("------------------------------------------------------------------------------")
-      graph3.vertices.collect().foreach(println)
-      val res2 = graph3.vertices.take(graph3.numVertices.toInt)
-
-      println("fini1")
-
-      val graphres = graph3.subgraph(vpred = (id, attr) => attr.getPDV()> 0)
-
-      println("------------------------------------------------------------------------------")
-      println("                        ETAT  INITIAL    2                                     ")
-      println("------------------------------------------------------------------------------")
-
-      graphres.vertices.collect().foreach(println)
-
-      val actionTodo2: VertexRDD[ArrayBuffer[msg]] = graphres.aggregateMessages[ArrayBuffer[msg]](
-        triplet =>{
-          triplet.srcAttr.actionPossible(triplet)
-        },
-        (msg1,msg2) => msg1 ++ msg2
-      )
-
-      println("------------------------------------------------------------------------------")
-      println("                        ACTIONS POSSIBLES    2                                     ")
-      println("------------------------------------------------------------------------------")
-
-      val tttt = actionTodo2.collect().foreach(println)
+            //var ttt = actionTodo.collect().foreach(println)
 
 
-      //Choix des actions
-      val graph4 = graphres.joinVertices(actionTodo2)(
-        (vid, monstres, msgs) => monstres.choisirAction(vid,monstres,msgs)
-      )
+            //Choix des actions
+            graph = graph.joinVertices(actionTodo)(
+              (vid, monstres, msgs) => monstres.choisirAction(vid,monstres,msgs)
+            )
 
-      var res3 = graph4.vertices.take(graph4.numVertices.toInt)
+            //var res = graph.vertices.take(graph.numVertices.toInt)
 
-      println("------------------------------------------------------------------------------")
-      println("                        CHOIX ACTION    2                                     ")
-      println("------------------------------------------------------------------------------")
-      graph4.vertices.collect().foreach(println)
+            println("------------------------------------------------------------------------------")
+            println("                       CHOIX ACTION                                      ")
+            println("------------------------------------------------------------------------------")
 
-      val executerLesAction2:VertexRDD[ArrayBuffer[message2]] = graph4.aggregateMessages[ArrayBuffer[message2]](
-        triplet =>{
-          triplet.srcAttr.executeAction(triplet)
-        },
-        (msg1,msg2) => msg1 ++ msg2
-      )
+            graph.vertices.collect().foreach(println)
 
-      println("------------------------------------------------------------------------------")
-      println("                        EXECUTION  ACTION    2                                     ")
-      println("------------------------------------------------------------------------------")
-      executerLesAction2.collect().foreach(println)
+            val executerLesAction:VertexRDD[ArrayBuffer[message2]] = graph.aggregateMessages[ArrayBuffer[message2]](
+              triplet =>{
+                triplet.srcAttr.executeAction(triplet)
+              },
+              (msg1,msg2) => msg1 ++ msg2
+            )
 
 
-      val graph5 = graph4.joinVertices(executerLesAction2)(
-        (vid,monstres,msgs) => monstres.receptionnerAction(vid,monstres,msgs)
-      )
+            println("------------------------------------------------------------------------------")
+            println("                        EXECUTE ACTIONS                                     ")
+            println("------------------------------------------------------------------------------")
+            executerLesAction.collect().foreach(println)
 
-      println("------------------------------------------------------------------------------")
-      println("                        RECEPTION ACTION    2                                     ")
-      println("------------------------------------------------------------------------------")
-      graph5.vertices.collect().foreach(println)
+            graph = graph.joinVertices(executerLesAction)(
+              (vid,monstres,msgs) => monstres.receptionnerAction(vid,monstres,msgs)
+            )
 
+            println("------------------------------------------------------------------------------")
+            println("                        RECEPTION ACTION                                     ")
+            println("------------------------------------------------------------------------------")
+            graph.vertices.collect().foreach(println)
+
+            //val res2 = graph.vertices.take(graph.numVertices.toInt)
+            graph = graph.subgraph(vpred = (id, attr) => attr.getPDV()> 0)
+          }
+        }
+
+      executionDeLalgorithme()
+      println("Fin Combat 1")
 
     }
 
