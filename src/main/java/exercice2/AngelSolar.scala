@@ -482,45 +482,51 @@ class BarbareOrc(
           var toucher = 0
           var degats = 0
           if (distance(triplet.dstAttr.position) <= 10) {
-            toucher = d20() + 19
+            val de1 = d20()
+            toucher = de1 + 19
             degats = d8() + 10
-            if (triplet.dstAttr.getArmure() <= toucher) {
+            if (triplet.dstAttr.getArmure() <= toucher || de1 == 20) {
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
             }
-            toucher = d20() + 14
+            val de2 = d20()
+            toucher = de2 + 14
             degats = d8() + 10
-            if (triplet.dstAttr.getArmure() <= toucher) {
+            if (triplet.dstAttr.getArmure() <= toucher || de2 == 20) {
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
             }
-            toucher = d20() + 9
+            val de3 = d20()
+            toucher = de3 + 9
             degats = d8() + 10
-            if (triplet.dstAttr.getArmure() <= toucher) {
+            if (triplet.dstAttr.getArmure() <= toucher || de3 == 20) {
               val m = new ArrayBuffer[message2]()
               m.append(new attaque( degats))
               triplet.sendToDst(m)
             }
           } else {
-            toucher = d20()+ 16
+            val de1 = d20()
+            toucher = de1 + 16
             degats = d8() + 6
-            if (triplet.dstAttr.getArmure() <= toucher) {
+            if (triplet.dstAttr.getArmure() <= toucher || de1 == 20) {
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
             }
-            toucher = d20()+ 11
+            val de2 = d20()
+            toucher = de2 + 11
             degats = d8() + 6
-            if (triplet.dstAttr.getArmure() <= toucher) {
+            if (triplet.dstAttr.getArmure() <= toucher || de2 == 20) {
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
             }
-            toucher = d20()+ 6
+            val de3 = d20()
+            toucher = de3 + 6
             degats = d8() + 6
-            if (triplet.dstAttr.getArmure() <= toucher) {
+            if (triplet.dstAttr.getArmure() <= toucher || de3 == 20) {
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
