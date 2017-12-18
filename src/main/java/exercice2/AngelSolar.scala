@@ -481,21 +481,21 @@ class BarbareOrc(
             degats = d8() + 10
             if (triplet.dstAttr.getArmure() <= toucher) {
               val m = new ArrayBuffer[message2]()
-              m.append(new attaque(toucher, degats));
+              m.append(new attaque(toucher, degats))
               triplet.sendToDst(m)
             }
             toucher = d20() + 14
             degats = d8() + 10
             if (triplet.dstAttr.getArmure() <= toucher) {
               val m = new ArrayBuffer[message2]()
-              m.append(new attaque(toucher, degats));
+              m.append(new attaque(toucher, degats))
               triplet.sendToDst(m)
             }
             toucher = d20() + 9
             degats = d8() + 10
             if (triplet.dstAttr.getArmure() <= toucher) {
               val m = new ArrayBuffer[message2]()
-              m.append(new attaque(toucher, degats));
+              m.append(new attaque(toucher, degats))
               triplet.sendToDst(m)
             }
           } else {
@@ -503,21 +503,21 @@ class BarbareOrc(
             degats = d8() + 6
             if (triplet.dstAttr.getArmure() <= toucher) {
               val m = new ArrayBuffer[message2]()
-              m.append(new attaque(toucher, degats));
+              m.append(new attaque(toucher, degats))
               triplet.sendToDst(m)
             }
             toucher = d20()+ 11
             degats = d8() + 6
             if (triplet.dstAttr.getArmure() <= toucher) {
               val m = new ArrayBuffer[message2]()
-              m.append(new attaque(toucher, degats));
+              m.append(new attaque(toucher, degats))
               triplet.sendToDst(m)
             }
             toucher = d20()+ 6
             degats = d8() + 6
             if (triplet.dstAttr.getArmure() <= toucher) {
               val m = new ArrayBuffer[message2]()
-              m.append(new attaque(toucher, degats));
+              m.append(new attaque(toucher, degats))
               triplet.sendToDst(m)
             }
           }

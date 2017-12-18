@@ -15,7 +15,7 @@ case class msg(var actionType : TypeAction, var idDest : VertexId, var posSrc:Po
   }
 }
 
-abstract class message2 (actionType : TypeAction){
+abstract class message2 (actionType : TypeAction) extends Serializable {
   def getActionType : TypeAction ={
      actionType
   }
