@@ -12,7 +12,8 @@ abstract class Monstre(
                       PDVmax:Int,
                       Lvl:Int,
                       deplacementParTour:Int,
-                      armure:Int
+                      armure:Int,
+                      PDV:Int
                       ) extends Serializable {
 
   var vivant: Boolean = true;
@@ -28,8 +29,6 @@ abstract class Monstre(
   def getArmure(): Int ={
     this.armure
   }
-
-
   def setPosition(position: Position): Unit = {
     this.position = position
   }
@@ -65,9 +64,6 @@ abstract class Monstre(
 
   //TODO Cette variable se réinitialise !
   var nextAction :prochaineAction = null// prochaineAction(-1,TypeAction.HEAL) //On initialise car sinon c'est la merde
-
-  var PDV : Int = PDVmax
-
   def getPDVMax() : Int = {
     return PDVmax
   }
@@ -81,7 +77,7 @@ abstract class Monstre(
   }
 
   def getPDV() : Int = {
-    return PDV
+   this.PDV
   }
   var actionsPossibles = scala.collection.mutable.Seq[ActionMonstre]();
 
