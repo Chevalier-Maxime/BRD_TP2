@@ -158,4 +158,7 @@ def calculDeplacement( positionAAtteindre: Position, nbDeplacement : Int): Posit
   def d6() : Int ={
     scala.util.Random.nextInt(6)+1
   }
+  def d8() : Int ={
+    scala.util.Random.nextInt(8)+1
+  }
 }
