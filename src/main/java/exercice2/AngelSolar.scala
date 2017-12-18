@@ -5,12 +5,11 @@ import exercice2.TypeAction.TypeAction
 import org.apache.spark.graphx.{EdgeContext, VertexId}
 import scala.collection.mutable.ArrayBuffer
 
-case class AngelSolar(
-                       override var position:Position,
-                       override val equipe:Int,
-                       override val Lvl:Int,
-                       override val armure : Int
-                ) extends Monstre(position,"Angel Solar",equipe,100,Lvl,150,armure) {
+class AngelSolar(
+                       position:Position,
+                       equipe:Int,
+                       Lvl:Int
+                ) extends Monstre(position,"Angel Solar",equipe,100,Lvl,150,44) {
 
 
   var massHealDisponible: Boolean = true
@@ -47,7 +46,7 @@ case class AngelSolar(
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
 
-    var retttt : Monstre = new AngelSolar(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.armure)
+    var retttt : Monstre = new AngelSolar(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
     /*retttt.setNextAction(vid,TypeAction.MOVE)
     return retttt*/
 
@@ -114,9 +113,10 @@ case class AngelSolar(
   }
 
   override def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit  = {
-    println(this + " VID Enregistre = " + triplet.dstId + ", cible : "+nextAction.vertexId)
+
     //var (id, actionType) = this.nextAction
     if(triplet.dstId == nextAction.vertexId){
+      println(this + " VID Enregistre = " + triplet.dstId + ", cible : "+nextAction.vertexId)
       nextAction.typeAction match {
         case TypeAction.HEAL => println( triplet.srcId + " heal " + triplet.dstId)
           val m = new ArrayBuffer[message2]()
@@ -203,12 +203,11 @@ case class AngelSolar(
 }
 
 
-case class WorgsRider(
-                  override var position:Position,
-                  override val equipe:Int,
-                  override val Lvl:Int,
-                  override val armure:Int
-                ) extends Monstre(position,"Worgs Rider",equipe,100,Lvl,60,armure) {
+class WorgsRider(
+                  position:Position,
+                  equipe:Int,
+                  Lvl:Int
+                ) extends Monstre(position,"Worgs Rider",equipe,100,Lvl,60,18) {
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]): Unit = {
     //Si ennemi
@@ -228,7 +227,7 @@ case class WorgsRider(
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]): Monstre = {
 
-    var retttt : Monstre = new WorgsRider(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.armure)
+    var retttt : Monstre = new WorgsRider(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
     /*retttt.setNextAction(vid,TypeAction.MOVE)
     return retttt*/
 
@@ -267,9 +266,10 @@ case class WorgsRider(
   }
 
   override def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit = {
-    println(this + " VID Enregistre = " + triplet.dstId + ", cible : " + nextAction.vertexId)
+
     //var (id, actionType) = this.nextAction
     if (triplet.dstId == nextAction.vertexId) {
+      println(this + " VID Enregistre = " + triplet.dstId + ", cible : " + nextAction.vertexId)
       nextAction.typeAction match {
         case TypeAction.MOVE => println(triplet.srcId + " se deplace vers " + triplet.dstId)
           val m = new ArrayBuffer[message2]()
@@ -296,12 +296,11 @@ case class WorgsRider(
 }
 
 
-case class LeWarlord(
-                  override var position:Position,
-                  override val equipe:Int,
-                  override val Lvl:Int,
-                  override val armure:Int
-                ) extends Monstre(position,"Le Warlord",equipe,100,Lvl,90,armure) {
+class LeWarlord(
+                  position:Position,
+                  equipe:Int,
+                  Lvl:Int
+                ) extends Monstre(position,"Le Warlord",equipe,100,Lvl,90,27) {
 
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) = {
@@ -322,7 +321,7 @@ case class LeWarlord(
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
-    var retttt : Monstre = new LeWarlord(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.armure)
+    var retttt : Monstre = new LeWarlord(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
     /*retttt.setNextAction(vid,TypeAction.MOVE)
     return retttt*/
 
@@ -357,9 +356,10 @@ case class LeWarlord(
     retttt
   }
   override def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit = {
-    println(this + " VID Enregistre = " + triplet.dstId + ", cible : " + nextAction.vertexId)
+
     //var (id, actionType) = this.nextAction
     if (triplet.dstId == nextAction.vertexId) {
+      println(this + " VID Enregistre = " + triplet.dstId + ", cible : " + nextAction.vertexId)
       nextAction.typeAction match {
         case TypeAction.MOVE => println(triplet.srcId + " se deplace vers " + triplet.dstId)
           val m = new ArrayBuffer[message2]()
@@ -404,12 +404,11 @@ case class LeWarlord(
   }
 }
 
-case class BarbareOrc(
-                 override var position:Position,
-                 override val equipe:Int,
-                 override val Lvl:Int,
-                 override val armure:Int
-               ) extends Monstre(position,"Barbare Orc",equipe,100,Lvl,120,armure) {
+class BarbareOrc(
+                 position:Position,
+                 equipe:Int,
+                 Lvl:Int
+               ) extends Monstre(position,"Barbare Orc",equipe,100,Lvl,120,17) {
 
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) = {
@@ -430,7 +429,7 @@ case class BarbareOrc(
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
-    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.armure)
+    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
     /*retttt.setNextAction(vid,TypeAction.MOVE)
     return retttt*/
 
@@ -465,9 +464,10 @@ case class BarbareOrc(
     retttt
   }
   override def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit = {
-    println(this + " VID Enregistre = " + triplet.dstId + ", cible : " + nextAction.vertexId)
+
     //var (id, actionType) = this.nextAction
     if (triplet.dstId == nextAction.vertexId) {
+      println(this + " VID Enregistre = " + triplet.dstId + ", cible : " + nextAction.vertexId)
       nextAction.typeAction match {
         case TypeAction.MOVE => println(triplet.srcId + " se deplace vers " + triplet.dstId)
           val m = new ArrayBuffer[message2]()

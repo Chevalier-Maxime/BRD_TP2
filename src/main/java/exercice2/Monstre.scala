@@ -5,7 +5,7 @@ import org.apache.spark.graphx.{EdgeContext, VertexId}
 
 import scala.collection.mutable.ArrayBuffer
 
-abstract case class Monstre(
+abstract class Monstre(
                       var position:Position,
                       nom:String,
                       equipe:Int,

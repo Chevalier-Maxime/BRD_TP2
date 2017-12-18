@@ -345,7 +345,7 @@ object Main extends App {
         (vid, monstres, msgs) => monstres.choisirAction(vid,monstres,msgs)
       )
 
-      var res = graph2.vertices.take(graph.numVertices.toInt)
+      var res = graph2.vertices.take(graph2.numVertices.toInt)
 
       graph2.vertices.collect().foreach(println)
 
@@ -363,7 +363,9 @@ object Main extends App {
         (vid,monstres,msgs) => monstres.receptionnerAction(vid,monstres,msgs)
       )
 
-      val res2 = graph3.vertices.take(2)
+      val res2 = graph3.vertices.take(graph3.numVertices.toInt)
+
+      graph3.vertices.collect().foreach(println)
       //Faire un join Vertices TODO
         /*val actionDeChaqueNoeud: VertexRDD[String] =
             actionTodo.mapValues(
