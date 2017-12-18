@@ -5,11 +5,11 @@ import exercice2.TypeAction.TypeAction
 import org.apache.spark.graphx.{EdgeContext, VertexId}
 import scala.collection.mutable.ArrayBuffer
 
-class AngelSolar(
+case class AngelSolar(
                   var position:Position,
                   equipe:Int,
                   Lvl:Int
-                ) extends Monstre(position,"Angel Solar",equipe,100,Lvl) {
+                ) extends Monstre(position,"Angel Solar",equipe,100,Lvl,150) {
 
 
   var massHealDisponible: Boolean = true
@@ -106,6 +106,46 @@ class AngelSolar(
 
   def heal() : Unit = {
     this.healDisponible = false
+  }
+
+  override def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit  = {
+    println(this + " VID Enregistre = " + triplet.dstId + ", cible : "+nextAction.vertexId)
+    //var (id, actionType) = this.nextAction
+    if(triplet.dstId == nextAction.vertexId){
+      nextAction.typeAction match {
+        case TypeAction.HEAL => println( triplet.srcId + " heal " + triplet.dstId)
+          val m = new ArrayBuffer[message2]()
+          //m.append(new msg(TypeAction.HEAL,triplet.srcId,triplet.dstAttr.getPosition()));
+          m.append(new  heal(triplet.srcAttr.getLvl(),10))
+          triplet.sendToSrc(m)
+        case TypeAction.MOVE => println(triplet.srcId + " se deplace vers " + triplet.dstId)
+          val m = new ArrayBuffer[message2]()
+          m.append(new deplacement(this.calculDeplacement(triplet.dstAttr.getPosition(),this.getDeplacementParTour)))
+          triplet.sendToSrc(m)
+        case TypeAction.ATTAQUE => println(triplet.srcId + " attaque " + triplet.dstId)
+          val m = new ArrayBuffer[message2]()
+          m.append(new attaque());
+          triplet.sendToSrc(m)
+      }
+    }
+  }
+
+  override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
+    var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
+    msgs.foreach(message => message.getActionType match {
+      case TypeAction.MOVE => messagePrint += "MOVE ";
+        val messageDepl = message.asInstanceOf[deplacement]
+        monstres.setPosition(messageDepl.getPosition)
+      case TypeAction.ATTAQUE => messagePrint +="ATTAQUE ";
+      case TypeAction.HEAL => messagePrint += "SOIN"
+        val messageHeal = message.asInstanceOf[heal]
+        monstres.addPDV(messageHeal.Lvl*messageHeal.multiplicateur)
+    })
+
+    println(messagePrint)
+
+    //this.nextAction = null
+    monstres
   }
 }
 

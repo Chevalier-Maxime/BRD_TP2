@@ -10,27 +10,33 @@ object TypeAction extends Enumeration with Serializable {
 
 case class msg(var actionType : TypeAction, var idDest : VertexId, var posSrc:Position) extends Serializable {
 
-  def getType() : TypeAction ={
-    return actionType
+  def getType : TypeAction ={
+    actionType
   }
 }
 
 abstract class message2 (actionType : TypeAction){
-  def getActionType() : TypeAction ={
-    return actionType
+  def getActionType : TypeAction ={
+     actionType
   }
 }
 
 case class heal(var Lvl : Int, var multiplicateur : Int) extends message2 (TypeAction.HEAL){
 
-  def getLvl() : Int ={
-    return Lvl
+  def getLvl : Int ={
+     Lvl
   }
   def getMultiplicateur : Int ={
-    return  multiplicateur
+    multiplicateur
   }
 
 }
 case class attaque() extends message2 (TypeAction.ATTAQUE){
 
+}
+
+case class deplacement(position: Position) extends message2 (TypeAction.MOVE){
+  def getPosition: Position ={
+    position
+  }
 }

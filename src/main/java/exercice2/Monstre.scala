@@ -6,59 +6,36 @@ import org.apache.spark.graphx.{EdgeContext, VertexId}
 import scala.collection.mutable.ArrayBuffer
 
 abstract class Monstre(
-                      position:Position,
+                      var position:Position,
                       nom:String,
                       equipe:Int,
                       PDVmax:Int,
-                      Lvl:Int
+                      Lvl:Int,
+                      deplacementParTour:Int
                       ) extends Serializable {
 
-  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
-    var messagePrint = "Moi "+nom+"@"+vid+" recoit les differentes actions :"
-    msgs.foreach(message => message.getActionType() match {
-      case TypeAction.MOVE => messagePrint += "MOVE ";
-      case TypeAction.ATTAQUE => messagePrint +="ATTAQUE ";
-      case TypeAction.HEAL => messagePrint += "SOIN"
-    })
-
-    println(messagePrint)
-
-    //this.nextAction = null
-    this
+  def setPosition(position: Position): Unit = {
+    this.position = position
   }
-def getNom() : String = {
-  this.nom
-}
+
+
+  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre
+
+  def getNom() : String = {
+    this.nom
+  }
   def getLvl() : Int = {
     this.Lvl
   }
   def getEquipe() :Int = {
     this.equipe
   }
+  def getDeplacementParTour : Int = {
+    deplacementParTour
+  }
 
   //TODO Changer le type de message
-  def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit = {
-    println(this + " VID Enregistre = " + triplet.dstId + ", cible : "+nextAction.vertexId)
-    //var (id, actionType) = this.nextAction
-    if(triplet.dstId == nextAction.vertexId){
-      nextAction.typeAction match {
-        case TypeAction.HEAL => println( triplet.srcId + " heal " + triplet.dstId)
-          val m = new ArrayBuffer[message2]()
-          //m.append(new msg(TypeAction.HEAL,triplet.srcId,triplet.dstAttr.getPosition()));
-          m.append(new  heal(triplet.srcAttr.getLvl(),10))
-          triplet.sendToSrc(m)
-        case TypeAction.MOVE => println(triplet.srcId + " se deplace vers " + triplet.dstId);
-          //TODO Move
-          /*val m = new ArrayBuffer[msg]()
-          m.append(new msg(TypeAction.MOVE,triplet.srcId,triplet.dstAttr.getPosition()));
-          triplet.sendToSrc(m)*/
-        case TypeAction.ATTAQUE => println(triplet.srcId + " attaque " + triplet.dstId)
-          val m = new ArrayBuffer[message2]()
-          m.append(new attaque());
-          triplet.sendToSrc(m)
-      }
-    }
-  }
+  def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit
 
   def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]): _root_.exercice2.Monstre
 
@@ -142,5 +119,13 @@ def calculDeplacement( positionAAtteindre: Position, nbDeplacement : Int): Posit
 
   override def toString: String = {
     super.toString + " next : " + this.nextAction
+  }
+
+  def addPDV(vie: Int): Unit ={
+    var total = this.getPDV() + vie
+    if(total > this.getPDVMax())
+      this.PDV = this.getPDVMax()
+    else
+      this.PDV = total
   }
 }
