@@ -31,11 +31,8 @@ case class heal(var Lvl : Int, var multiplicateur : Int) extends message2 (TypeA
   }
 
 }
-case class attaque(var toucher : Int, var degats : Int) extends message2 (TypeAction.ATTAQUE){
-
-  def getToucher() : Int ={
-    return toucher
-  }
+case class attaque(var degats : Int) extends message2 (TypeAction.ATTAQUE){
+  
   def  detDegats() : Int ={
     return degats
   }
