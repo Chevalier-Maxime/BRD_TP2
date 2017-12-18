@@ -13,7 +13,7 @@ abstract class Monstre(
                       Lvl:Int,
                       deplacementParTour:Int,
                       armure:Int,
-                      PDV:Int
+                      var PDV:Int
                       ) extends Serializable {
 
   var vivant: Boolean = true;
@@ -88,7 +88,11 @@ abstract class Monstre(
     val y:Double = (this.position.y - position.y).toDouble
     val carreY:Double = Math.pow(y,2.0)
 
-    Math.sqrt(carreX + carreY).toInt
+    val res = Math.sqrt(carreX + carreY).toInt
+    if (res == 0 )
+      1
+    else
+      res
   }
 
 

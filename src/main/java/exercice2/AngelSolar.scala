@@ -9,13 +9,10 @@ class AngelSolar(
                        position:Position,
                        equipe:Int,
                        Lvl:Int,
-                       PDV:Int
+                       PDV:Int,
+                       var massHealDisp:Boolean,
+                       var healDisp:Boolean
                 ) extends Monstre(position,"Angel Solar",equipe,100,Lvl,150,44,PDV) {
-
-
-  var massHealDisponible: Boolean = true
-
-  var healDisponible: Boolean = true
 
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) = {
@@ -47,24 +44,24 @@ class AngelSolar(
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
 
-    var retttt : Monstre = new AngelSolar(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.getPDV())
+    var retttt : Monstre = new AngelSolar(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.getPDV(),this.massHealDisp,this.healDisp)
     /*retttt.setNextAction(vid,TypeAction.MOVE)
     return retttt*/
 
     var nbDemandeHeal = 0
     var vertexIdAllierEnPLS : VertexId = -1
     //Si demande de Heal
-    if(this.healDisponible || this.massHealDisponible){
+    if(this.healDisp || this.massHealDisp){
       //TODO pour le moment on soigne pas le plus blessé
       msgs.foreach(message => message.actionType match {
         case TypeAction.HEAL => nbDemandeHeal+=1
           if(vertexIdAllierEnPLS == -1) vertexIdAllierEnPLS = message.idDest
         case _ =>
       })
-      if(nbDemandeHeal == 1 && this.healDisponible){
+      if(nbDemandeHeal == 1 && this.healDisp){
         retttt.setNextAction(vertexIdAllierEnPLS,TypeAction.HEAL)
         return retttt
-      }else if(nbDemandeHeal > 3 && this.massHealDisponible){
+      }else if(nbDemandeHeal > 3 && this.massHealDisp){
         retttt.setNextAction(-1,TypeAction.ATTAQUE)
         return retttt
       }
@@ -106,11 +103,11 @@ class AngelSolar(
 
 
   def heal() : Unit = {
-    this.healDisponible = false
+    this.healDisp = false
   }
 
   def massHeal() : Unit = {
-    this.massHealDisponible = false
+    this.massHealDisp = false
   }
 
   override def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit  = {
@@ -139,6 +136,11 @@ class AngelSolar(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20()+30
             degats = 3*d6()+18
@@ -146,6 +148,11 @@ class AngelSolar(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20()+25
             degats = 3*d6()+18
@@ -153,6 +160,11 @@ class AngelSolar(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20()+20
             degats = 3*d6()+18
@@ -160,6 +172,11 @@ class AngelSolar(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
           }else{
             toucher = d20()+31
@@ -168,6 +185,11 @@ class AngelSolar(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueD " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20()+26
             degats = 3*d6()+18
@@ -175,6 +197,11 @@ class AngelSolar(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueD " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20()+21
             degats = 3*d6()+18
@@ -182,6 +209,11 @@ class AngelSolar(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueD " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20()+16
             degats = 3*d6()+18
@@ -189,6 +221,11 @@ class AngelSolar(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueD " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
           }
       }
@@ -203,7 +240,7 @@ class AngelSolar(
   }
 
   override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
-    var retttt : Monstre = new AngelSolar(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var retttt : Monstre = new AngelSolar(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.getPDV(),this.massHealDisp,this.healDisp)
     var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
     msgs.foreach(message => message.getActionType match {
       case TypeAction.MOVE => messagePrint += "MOVE ";
@@ -249,7 +286,7 @@ class WorgsRider(
   }
 
   override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
-    var retttt : Monstre = new WorgsRider(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var retttt : Monstre = new WorgsRider(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.getPDV())
     var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
     msgs.foreach(message => message.getActionType match {
       case TypeAction.MOVE => messagePrint += "MOVE ";
@@ -319,7 +356,7 @@ class WorgsRider(
           val m = new ArrayBuffer[message2]()
           m.append(new deplacement(this.calculDeplacement(triplet.dstAttr.getPosition(), this.getDeplacementParTour)))
           triplet.sendToSrc(m)
-        case TypeAction.ATTAQUE => println(triplet.srcId + " attaque " + triplet.dstId)
+        case TypeAction.ATTAQUE =>
           var toucher = 0
           var degats = 0
           if (distance(triplet.dstAttr.position) <= 10) {
@@ -333,6 +370,10 @@ class WorgsRider(
             val m = new ArrayBuffer[message2]()
             m.append(new attaque( degats));
             triplet.sendToDst(m)
+            println(triplet.srcId + " attaque " + triplet.dstId)
+          }
+          else {
+            println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
           }
       }
     }
@@ -365,7 +406,7 @@ class LeWarlord(
   }
 
   override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
-    var retttt : Monstre = new LeWarlord(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var retttt : Monstre = new LeWarlord(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.getPDV())
     var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
     msgs.foreach(message => message.getActionType match {
       case TypeAction.MOVE => messagePrint += "MOVE ";
@@ -432,7 +473,7 @@ class LeWarlord(
           val m = new ArrayBuffer[message2]()
           m.append(new deplacement(this.calculDeplacement(triplet.dstAttr.getPosition(), this.getDeplacementParTour)))
           triplet.sendToSrc(m)
-        case TypeAction.ATTAQUE => println(triplet.srcId + " attaque " + triplet.dstId)
+        case TypeAction.ATTAQUE =>
           var toucher = 0
           var degats = 0
           if (distance(triplet.dstAttr.position) <= 10) {
@@ -442,6 +483,11 @@ class LeWarlord(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20() + 15
             degats = d8() + 10
@@ -449,6 +495,11 @@ class LeWarlord(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20() + 10
             degats = d8() + 10
@@ -456,6 +507,11 @@ class LeWarlord(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
           } else {
             toucher = d20()+ 19
@@ -464,6 +520,11 @@ class LeWarlord(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats));
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueD " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
           }
       }
@@ -479,7 +540,7 @@ class BarbareOrc(
                ) extends Monstre(position,"Barbare Orc",equipe,100,Lvl,120,17,PDV) {
 
   override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
-    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.getPDV())
     var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
     msgs.foreach(message => message.getActionType match {
       case TypeAction.MOVE => messagePrint += "MOVE ";
@@ -561,7 +622,7 @@ class BarbareOrc(
           val m = new ArrayBuffer[message2]()
           m.append(new deplacement(this.calculDeplacement(triplet.dstAttr.getPosition(), this.getDeplacementParTour)))
           triplet.sendToSrc(m)
-        case TypeAction.ATTAQUE => println(triplet.srcId + " attaque " + triplet.dstId)
+        case TypeAction.ATTAQUE =>
           var toucher = 0
           var degats = 0
           if (distance(triplet.dstAttr.position) <= 10) {
@@ -571,6 +632,11 @@ class BarbareOrc(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20() + 14
             degats = d8() + 10
@@ -578,6 +644,11 @@ class BarbareOrc(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20() + 9
             degats = d8() + 10
@@ -585,6 +656,11 @@ class BarbareOrc(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque( degats))
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueC " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
           } else {
             toucher = d20()+ 16
@@ -593,6 +669,11 @@ class BarbareOrc(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueD " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20()+ 11
             degats = d8() + 6
@@ -600,6 +681,11 @@ class BarbareOrc(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueD " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
             toucher = d20()+ 6
             degats = d8() + 6
@@ -607,6 +693,11 @@ class BarbareOrc(
               val m = new ArrayBuffer[message2]()
               m.append(new attaque(degats))
               triplet.sendToDst(m)
+
+              println(triplet.srcId + " attaqueD " + triplet.dstId)
+            }
+            else {
+              println(triplet.srcId + " rate son attaque contre  " + triplet.dstId)
             }
           }
       }
