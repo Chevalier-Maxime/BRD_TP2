@@ -102,6 +102,44 @@ def getNom() : String = {
   }
 
 
+def calculDeplacement( positionAAtteindre: Position, nbDeplacement : Int): Position ={
+  var dpl = nbDeplacement
+  //On se déplace sur les x
+  var directionX = 0
+  if(positionAAtteindre.x < position.x)
+    directionX = -1
+  else
+    directionX = 1
+
+  var distX = Math.abs(position.x - positionAAtteindre.x)
+  var newX = 0
+  if (distX < dpl){
+    dpl -= distX
+    newX = position.x + (distX * directionX)
+
+    var directionY = 0
+    if(positionAAtteindre.y < position.y)
+      directionY = -1
+    else
+      directionY = 1
+
+    var distY = Math.abs(position.y - positionAAtteindre.y)
+    var newY = 0
+    if (distY < dpl) {
+      newY = position.y + (distY * directionY)
+      return new Position(newX,newY)
+    }
+    else{
+      newY = position.y + (dpl * directionY)
+      return new Position(newX,newY)
+    }
+  }else{
+    newX = position.x + (dpl * directionX)
+    new Position(newX, position.y)
+  }
+
+  }
+
   override def toString: String = {
     super.toString + " next : " + this.nextAction
   }
