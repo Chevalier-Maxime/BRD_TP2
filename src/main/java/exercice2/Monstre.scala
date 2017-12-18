@@ -19,7 +19,23 @@ abstract class Monstre(
   }
 
 
-  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre
+  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
+    var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
+    msgs.foreach(message => message.getActionType match {
+      case TypeAction.MOVE => messagePrint += "MOVE ";
+        val messageDepl = message.asInstanceOf[deplacement]
+        monstres.setPosition(messageDepl.getPosition)
+      case TypeAction.ATTAQUE => messagePrint +="ATTAQUE ";
+      case TypeAction.HEAL => messagePrint += "SOIN"
+        val messageHeal = message.asInstanceOf[heal]
+        monstres.addPDV(messageHeal.Lvl*messageHeal.multiplicateur)
+    })
+
+    println(messagePrint)
+
+    //this.nextAction = null
+    monstres
+  }
 
   def getNom() : String = {
     this.nom
@@ -41,6 +57,7 @@ abstract class Monstre(
 
 
   def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]): Unit
+
 
 
   case class prochaineAction(var vertexId: VertexId, var typeAction: TypeAction)
@@ -77,6 +94,8 @@ abstract class Monstre(
 
     Math.sqrt(carreX + carreY).toInt
   }
+
+
 
 
 def calculDeplacement( positionAAtteindre: Position, nbDeplacement : Int): Position ={

@@ -60,10 +60,10 @@ case class AngelSolar(
           if(vertexIdAllierEnPLS == -1) vertexIdAllierEnPLS = message.idDest
         case _ =>
       })
-      if(nbDemandeHeal == 1){
+      if(nbDemandeHeal == 1 && this.healDisponible){
         retttt.setNextAction(vertexIdAllierEnPLS,TypeAction.HEAL)
         return retttt
-      }else if(nbDemandeHeal > 3){
+      }else if(nbDemandeHeal > 3 && this.massHealDisponible){
         retttt.setNextAction(-1,TypeAction.ATTAQUE)
         return retttt
       }
@@ -108,6 +108,10 @@ case class AngelSolar(
     this.healDisponible = false
   }
 
+  def massHeal() : Unit = {
+    this.massHealDisponible = false
+  }
+
   override def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit  = {
     println(this + " VID Enregistre = " + triplet.dstId + ", cible : "+nextAction.vertexId)
     //var (id, actionType) = this.nextAction
@@ -117,7 +121,8 @@ case class AngelSolar(
           val m = new ArrayBuffer[message2]()
           //m.append(new msg(TypeAction.HEAL,triplet.srcId,triplet.dstAttr.getPosition()));
           m.append(new  heal(triplet.srcAttr.getLvl(),10))
-          triplet.sendToSrc(m)
+          heal()
+          triplet.sendToDst(m)
         case TypeAction.MOVE => println(triplet.srcId + " se deplace vers " + triplet.dstId)
           val m = new ArrayBuffer[message2]()
           m.append(new deplacement(this.calculDeplacement(triplet.dstAttr.getPosition(),this.getDeplacementParTour)))
@@ -125,32 +130,21 @@ case class AngelSolar(
         case TypeAction.ATTAQUE => println(triplet.srcId + " attaque " + triplet.dstId)
           val m = new ArrayBuffer[message2]()
           m.append(new attaque());
-          triplet.sendToSrc(m)
+          triplet.sendToDst(m)
       }
+      //MASS HEAL
+    }else if(nextAction.vertexId == -1 && triplet.attr.getRelation() == TypeRelation.FRIEND){
+      massHeal()
+      val m = new ArrayBuffer[message2]()
+      //m.append(new msg(TypeAction.HEAL,triplet.srcId,triplet.dstAttr.getPosition()));
+      m.append(new  heal(triplet.srcAttr.getLvl(),10))
+      triplet.sendToDst(m)
     }
-  }
-
-  override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
-    var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
-    msgs.foreach(message => message.getActionType match {
-      case TypeAction.MOVE => messagePrint += "MOVE ";
-        val messageDepl = message.asInstanceOf[deplacement]
-        monstres.setPosition(messageDepl.getPosition)
-      case TypeAction.ATTAQUE => messagePrint +="ATTAQUE ";
-      case TypeAction.HEAL => messagePrint += "SOIN"
-        val messageHeal = message.asInstanceOf[heal]
-        monstres.addPDV(messageHeal.Lvl*messageHeal.multiplicateur)
-    })
-
-    println(messagePrint)
-
-    //this.nextAction = null
-    monstres
   }
 }
 
 
-class WorgsRider(
+case class WorgsRider(
                   position:Position,
                   equipe:Int,
                   Lvl:Int
