@@ -8,8 +8,9 @@ import scala.collection.mutable.ArrayBuffer
 case class AngelSolar(
                        override var position:Position,
                        equipe:Int,
-                       Lvl:Int
-                ) extends Monstre(position,"Angel Solar",equipe,100,Lvl,150) {
+                       Lvl:Int,
+                       armure : Int
+                ) extends Monstre(position,"Angel Solar",equipe,100,Lvl,150,armure) {
 
 
   var massHealDisponible: Boolean = true
@@ -123,9 +124,20 @@ case class AngelSolar(
           m.append(new deplacement(this.calculDeplacement(triplet.dstAttr.getPosition(),this.getDeplacementParTour)))
           triplet.sendToSrc(m)
         case TypeAction.ATTAQUE => println(triplet.srcId + " attaque " + triplet.dstId)
-          val m = new ArrayBuffer[message2]()
-          m.append(new attaque());
-          triplet.sendToSrc(m)
+          var toucher = 0
+          var degats = 0
+          if (distance(triplet.dstAttr.position)<=10){
+            toucher = d20()+35
+            degats = 3*d6()+18
+          }else{
+            toucher = d20()+31
+            degats = 2*d6()+14
+          }
+          if (triplet.dstAttr.getArmure() <= toucher ){
+            val m = new ArrayBuffer[message2]()
+            m.append(new attaque(toucher,degats));
+            triplet.sendToDst(m)
+          }
       }
     }
   }
@@ -153,8 +165,9 @@ case class AngelSolar(
 class WorgsRider(
                   position:Position,
                   equipe:Int,
-                  Lvl:Int
-                ) extends Monstre(position,"Worgs Rider",equipe,100,Lvl,60) {
+                  Lvl:Int,
+                  armure:Int
+                ) extends Monstre(position,"Worgs Rider",equipe,100,Lvl,60,armure) {
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) : Unit = {
     //Si ennemi
@@ -215,7 +228,7 @@ class LeWarlord(
                   position:Position,
                   equipe:Int,
                   Lvl:Int
-                ) extends Monstre(position,"Le Warlord",equipe,100,Lvl,90) {
+                ) extends Monstre(position,"Le Warlord",equipe,100,Lvl) {
 
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) = {
@@ -276,7 +289,7 @@ class BarbareOrc(
                  position:Position,
                  equipe:Int,
                  Lvl:Int
-               ) extends Monstre(position,"Barbare Orc",equipe,100,Lvl,120) {
+               ) extends Monstre(position,"Barbare Orc",equipe,100,Lvl) {
 
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) = {

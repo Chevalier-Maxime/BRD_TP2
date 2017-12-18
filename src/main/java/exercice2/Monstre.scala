@@ -11,8 +11,13 @@ abstract class Monstre(
                       equipe:Int,
                       PDVmax:Int,
                       Lvl:Int,
-                      deplacementParTour:Int
+                      deplacementParTour:Int,
+                      armure:Int
                       ) extends Serializable {
+  def getArmure(): Int ={
+    this.armure
+  }
+
 
   def setPosition(position: Position): Unit = {
     this.position = position
@@ -127,5 +132,11 @@ def calculDeplacement( positionAAtteindre: Position, nbDeplacement : Int): Posit
       this.PDV = this.getPDVMax()
     else
       this.PDV = total
+  }
+  def d20() : Int ={
+    scala.util.Random.nextInt(20)+1
+  }
+  def d6() : Int ={
+    scala.util.Random.nextInt(6)+1
   }
 }
