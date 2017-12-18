@@ -200,6 +200,27 @@ class AngelSolar(
       triplet.sendToDst(m)
     }
   }
+
+  override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
+    var retttt : Monstre = new AngelSolar(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
+    msgs.foreach(message => message.getActionType match {
+      case TypeAction.MOVE => messagePrint += "MOVE ";
+        val messageDepl = message.asInstanceOf[deplacement]
+        retttt.setPosition(messageDepl.getPosition)
+      case TypeAction.ATTAQUE => messagePrint +="ATTAQUE "
+        val messageAttaque = message.asInstanceOf[attaque]
+        retttt.removePDV(messageAttaque.degats)
+      case TypeAction.HEAL => messagePrint += "SOIN"
+        val messageHeal = message.asInstanceOf[heal]
+        retttt.addPDV(messageHeal.Lvl*messageHeal.multiplicateur)
+    })
+
+    println(messagePrint)
+
+    //this.nextAction = null
+    retttt
+  }
 }
 
 
@@ -223,6 +244,27 @@ class WorgsRider(
         triplet.sendToSrc(m)
       }
     }
+  }
+
+  override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
+    var retttt : Monstre = new WorgsRider(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
+    msgs.foreach(message => message.getActionType match {
+      case TypeAction.MOVE => messagePrint += "MOVE ";
+        val messageDepl = message.asInstanceOf[deplacement]
+        retttt.setPosition(messageDepl.getPosition)
+      case TypeAction.ATTAQUE => messagePrint +="ATTAQUE "
+        val messageAttaque = message.asInstanceOf[attaque]
+        retttt.removePDV(messageAttaque.degats)
+      case TypeAction.HEAL => messagePrint += "SOIN"
+        val messageHeal = message.asInstanceOf[heal]
+        retttt.addPDV(messageHeal.Lvl*messageHeal.multiplicateur)
+    })
+
+    println(messagePrint)
+
+    //this.nextAction = null
+    retttt
   }
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]): Monstre = {
@@ -319,6 +361,27 @@ class LeWarlord(
     }
   }
 
+  override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
+    var retttt : Monstre = new LeWarlord(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
+    msgs.foreach(message => message.getActionType match {
+      case TypeAction.MOVE => messagePrint += "MOVE ";
+        val messageDepl = message.asInstanceOf[deplacement]
+        retttt.setPosition(messageDepl.getPosition)
+      case TypeAction.ATTAQUE => messagePrint +="ATTAQUE "
+        val messageAttaque = message.asInstanceOf[attaque]
+        retttt.removePDV(messageAttaque.degats)
+      case TypeAction.HEAL => messagePrint += "SOIN"
+        val messageHeal = message.asInstanceOf[heal]
+        retttt.addPDV(messageHeal.Lvl*messageHeal.multiplicateur)
+    })
+
+    println(messagePrint)
+
+    //this.nextAction = null
+    retttt
+  }
+
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
     var retttt : Monstre = new LeWarlord(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
@@ -410,6 +473,26 @@ class BarbareOrc(
                  Lvl:Int
                ) extends Monstre(position,"Barbare Orc",equipe,100,Lvl,120,17) {
 
+  override def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
+    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
+    msgs.foreach(message => message.getActionType match {
+      case TypeAction.MOVE => messagePrint += "MOVE ";
+        val messageDepl = message.asInstanceOf[deplacement]
+        retttt.setPosition(messageDepl.getPosition)
+      case TypeAction.ATTAQUE => messagePrint +="ATTAQUE "
+        val messageAttaque = message.asInstanceOf[attaque]
+        retttt.removePDV(messageAttaque.degats)
+      case TypeAction.HEAL => messagePrint += "SOIN"
+        val messageHeal = message.asInstanceOf[heal]
+        retttt.addPDV(messageHeal.Lvl*messageHeal.multiplicateur)
+    })
+
+    println(messagePrint)
+
+    //this.nextAction = null
+    retttt
+  }
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) = {
     //Si ennemi

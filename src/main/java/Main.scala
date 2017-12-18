@@ -363,20 +363,47 @@ object Main extends App {
         (vid,monstres,msgs) => monstres.receptionnerAction(vid,monstres,msgs)
       )
 
+      graph3.vertices.collect().foreach(println)
       val res2 = graph3.vertices.take(graph3.numVertices.toInt)
 
-      graph3.vertices.collect().foreach(println)
-      //Faire un join Vertices TODO
-        /*val actionDeChaqueNoeud: VertexRDD[String] =
-            actionTodo.mapValues(
-                (id, msg) => msg.actionType match {
-                    case TypeAction.HEAL => id + " peux heal" + msg.id
-                    case TypeAction.ATTAQUE => id + "peux attaquer " + msg.id
-                }
+      println("fini1")
 
-            )
 
-        actionDeChaqueNoeud.collect().foreach(println(_))*/
+      val actionTodo2: VertexRDD[ArrayBuffer[msg]] = graph3.aggregateMessages[ArrayBuffer[msg]](
+        triplet =>{
+          triplet.srcAttr.actionPossible(triplet)
+        },
+        (msg1,msg2) => msg1 ++ msg2
+      )
+
+
+      val tttt = actionTodo2.collect().foreach(println)
+
+
+      //Choix des actions
+      val graph4 = graph3.joinVertices(actionTodo2)(
+        (vid, monstres, msgs) => monstres.choisirAction(vid,monstres,msgs)
+      )
+
+      var res3 = graph4.vertices.take(graph4.numVertices.toInt)
+
+      graph4.vertices.collect().foreach(println)
+
+      val executerLesAction2:VertexRDD[ArrayBuffer[message2]] = graph4.aggregateMessages[ArrayBuffer[message2]](
+        triplet =>{
+          triplet.srcAttr.executeAction(triplet)
+        },
+        (msg1,msg2) => msg1 ++ msg2
+      )
+
+
+      executerLesAction2.collect().foreach(println)
+
+      val graph5 = graph4.joinVertices(executerLesAction2)(
+        (vid,monstres,msgs) => monstres.receptionnerAction(vid,monstres,msgs)
+      )
+
+      graph5.vertices.collect().foreach(println)
     }
 
     exercice2Partie1()

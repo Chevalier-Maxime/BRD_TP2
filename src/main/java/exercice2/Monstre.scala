@@ -14,6 +14,17 @@ abstract class Monstre(
                       deplacementParTour:Int,
                       armure:Int
                       ) extends Serializable {
+
+  var vivant: Boolean = true;
+
+  def removePDV(degats: Int): Unit = {
+    this.PDV -= degats
+    if(PDV < 0){
+      vivant = false
+      println(this + " meurt")
+    }
+  }
+
   def getArmure(): Int ={
     this.armure
   }
@@ -24,23 +35,7 @@ abstract class Monstre(
   }
 
 
-  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre = {
-    var messagePrint = "Moi "+monstres.getNom()+"@"+vid+" recoit les differentes actions :"
-    msgs.foreach(message => message.getActionType match {
-      case TypeAction.MOVE => messagePrint += "MOVE ";
-        val messageDepl = message.asInstanceOf[deplacement]
-        monstres.setPosition(messageDepl.getPosition)
-      case TypeAction.ATTAQUE => messagePrint +="ATTAQUE ";
-      case TypeAction.HEAL => messagePrint += "SOIN"
-        val messageHeal = message.asInstanceOf[heal]
-        monstres.addPDV(messageHeal.Lvl*messageHeal.multiplicateur)
-    })
-
-    println(messagePrint)
-
-    //this.nextAction = null
-    monstres
-  }
+  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre
 
   def getNom() : String = {
     this.nom
@@ -142,7 +137,7 @@ def calculDeplacement( positionAAtteindre: Position, nbDeplacement : Int): Posit
   }
 
   override def toString: String = {
-    super.toString + " next : " + this.nextAction
+    super.toString + " next : " + this.nextAction + " en vie :" + this.vivant + " position : " + this.position
   }
 
   def addPDV(vie: Int): Unit ={
