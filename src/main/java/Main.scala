@@ -353,7 +353,7 @@ object Main extends App {
             println("                        ACTIONS POSSIBLES                                     ")
             println("------------------------------------------------------------------------------")
 
-            //var ttt = actionTodo.collect().foreach(println)
+            var ttt = actionTodo.collect().foreach(println)
 
 
             //Choix des actions

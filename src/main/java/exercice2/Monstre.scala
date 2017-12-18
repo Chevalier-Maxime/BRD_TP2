@@ -19,10 +19,12 @@ abstract class Monstre(
   var vivant: Boolean = true;
 
   def removePDV(degats: Int): Unit = {
-    this.PDV -= degats
-    if(PDV < 0){
-      vivant = false
-      println(this + " meurt")
+    if(PDV > 0) {
+      this.PDV -= degats
+      if (PDV < 0) {
+        vivant = false
+        println(this + " meurt")
+      }
     }
   }
 
