@@ -7,9 +7,9 @@ import scala.collection.mutable.ArrayBuffer
 
 case class AngelSolar(
                        override var position:Position,
-                       equipe:Int,
-                       Lvl:Int,
-                       armure : Int
+                       override val equipe:Int,
+                       override val Lvl:Int,
+                       override val armure : Int
                 ) extends Monstre(position,"Angel Solar",equipe,100,Lvl,150,armure) {
 
 
@@ -47,7 +47,7 @@ case class AngelSolar(
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
 
-    var retttt : Monstre = new AngelSolar(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var retttt : Monstre = new AngelSolar(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.armure)
     /*retttt.setNextAction(vid,TypeAction.MOVE)
     return retttt*/
 
@@ -156,11 +156,11 @@ case class AngelSolar(
 }
 
 
-class WorgsRider(
-                  position:Position,
-                  equipe:Int,
-                  Lvl:Int,
-                  armure:Int
+case class WorgsRider(
+                  override var position:Position,
+                  override val equipe:Int,
+                  override val Lvl:Int,
+                  override val armure:Int
                 ) extends Monstre(position,"Worgs Rider",equipe,100,Lvl,60,armure) {
 
   override def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]) : Unit = {
@@ -181,7 +181,7 @@ class WorgsRider(
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
-    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.armure)
     /*retttt.setNextAction(vid,TypeAction.MOVE)
     return retttt*/
 
@@ -218,11 +218,11 @@ class WorgsRider(
 }
 
 
-class LeWarlord(
-                  position:Position,
-                  equipe:Int,
-                  Lvl:Int,
-                  armure:Int
+case class LeWarlord(
+                  override var position:Position,
+                  override val equipe:Int,
+                  override val Lvl:Int,
+                  override val armure:Int
                 ) extends Monstre(position,"Le Warlord",equipe,100,Lvl,90,armure) {
 
 
@@ -244,7 +244,7 @@ class LeWarlord(
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
-    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.armure)
     /*retttt.setNextAction(vid,TypeAction.MOVE)
     return retttt*/
 
@@ -280,11 +280,11 @@ class LeWarlord(
   }
 }
 
-class BarbareOrc(
-                 position:Position,
-                 equipe:Int,
-                 Lvl:Int,
-                 armure:Int
+case class BarbareOrc(
+                 override var position:Position,
+                 override val equipe:Int,
+                 override val Lvl:Int,
+                 override val armure:Int
                ) extends Monstre(position,"Barbare Orc",equipe,100,Lvl,120,armure) {
 
 
@@ -306,7 +306,7 @@ class BarbareOrc(
 
   override def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]) : Monstre = {
 
-    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl())
+    var retttt : Monstre = new BarbareOrc(monstres.getPosition(),monstres.getEquipe(),monstres.getLvl(),monstres.armure)
     /*retttt.setNextAction(vid,TypeAction.MOVE)
     return retttt*/
 
@@ -340,4 +340,6 @@ class BarbareOrc(
     }
     retttt
   }
+
+
 }
