@@ -18,7 +18,6 @@ object Main extends App {
 
   val conf = new SparkConf()
       .setAppName("BDR TP2")
-      .setMaster("local[1]")
     val sc = new SparkContext(conf)
     sc.setLogLevel("ERROR")
 

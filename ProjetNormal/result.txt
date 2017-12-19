@@ -1,0 +1,356 @@
+Sort : horridWilting	 is used by : Half-Fiend
+Sort : detectMagic	 is used by : Aasimar / Azata, Lillend / Dark Creeper / Dark Stalker / Demon, Quasit / Devil, Imp / Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Gold / Metallic Dragon, Silver / Drider / Drow / Genie, Efreeti / Genie, Janni / Genie, Marid / Intellect Devourer / Lich / Naga, Dark / Naga, Guardian / Naga, Spirit / Night Hag / Nymph / Phoenix / Rakshasa / Sphinx / Vampire
+Sort : detectSnaresAndPits	 is used by : Angel, Planetar / Angel, Solar
+Sort : banishment	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Devourer / Metallic Dragon, Silver
+Sort : locateObject	 is used by : Chromatic Dragon, Green / Metallic Dragon, Brass / Metallic Dragon, Gold / Sphinx
+Sort : featherFall	 is used by : Metallic Dragon, Silver / Drow
+Sort : mindFog	 is used by : Metallic Dragon, Bronze / Metallic Dragon, Copper
+Sort : createUndead	 is used by : Devil, Pit Fiend / Mummy
+Sort : chillMetal	 is used by : Mephit
+Sort : minorImage	 is used by : Devil, Erinyes / Chromatic Dragon, Blue / Rakshasa
+Sort : flameStrike	 is used by : Angel, Planetar / Azata, Ghaele / Devil, Pit Fiend / Metallic Dragon, Silver
+Sort : burningHands	 is used by : Vampire
+Sort : meteorSwarm	 is used by : Devil, Pit Fiend
+Sort : faerieFire	 is used by : Drider / Drow
+Sort : breathOfLife	 is used by : Angel, Solar
+Sort : dispelChaos	 is used by : Demon, Succubus / Devil, Horned
+Sort : imprisonment	 is used by : Angel, Solar / Devourer / Chromatic Dragon, White
+Sort : clairaudienceClairvoyance	 is used by : Drider / Green Hag / Sphinx
+Sort : virtue	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Metallic Dragon, Silver
+Sort : chainLightning	 is used by : Azata, Ghaele / Giant, Storm
+Sort : entangle	 is used by : Assassin Vine / Chromatic Dragon, Green / Dryad / Nymph / Pixie
+Sort : iceStorm	 is used by : Devil, Ice / Chromatic Dragon, Green / Metallic Dragon, Bronze / Genie, Efreeti / Genie, Marid / Golem, Ice
+Sort : comprehendLanguages	 is used by : Metallic Dragon, Brass / Sphinx
+Sort : mislead	 is used by : Chromatic Dragon, Blue / Metallic Dragon, Bronze / Metallic Dragon, Copper
+Sort : mirrorImage	 is used by : Azata, Bralani / Cloaker / Demon, Glabrezu / Demon, Vrock / Chromatic Dragon, Green / Metallic Dragon, Bronze / Homunculus / Lamia
+Sort : wish	 is used by : Angel, Solar / Demon, Glabrezu / Derro / Devil, Pit Fiend / Devourer / Genie, Marid
+Sort : fogCloud	 is used by : Dark Stalker / Chromatic Dragon, White / Metallic Dragon, Bronze / Metallic Dragon, Silver / Giant, Cloud
+Sort : transmuteRockToMud	 is used by : Metallic Dragon, Copper / Giant, Stone / Golem, Stone
+Sort : flameBlade	 is used by : Nymph
+Sort : silence	 is used by : Couatl / Demon, Nabasu / Metallic Dragon, Gold / Drow
+Sort : giantForm	 is used by : Genie, Efreeti / Genie, Marid / Oni, Ogre Mage
+Sort : dimensionalAnchor	 is used by : Angel, Solar / Devil, Bone / Metallic Dragon, Brass
+Sort : deathKnell	 is used by : Devourer / Drow
+Sort : invisibility	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Azata, Ghaele / Azata, Lillend / Couatl / Demon, Quasit / Devil, Bone / Devil, Imp / Devil, Pit Fiend / Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Silver / Drider / Drow / Duergar / Genie, Djinni / Genie, Efreeti / Genie, Janni / Genie, Marid / Green Hag / Intellect Devourer / Lich / Naga, Dark / Naga, Guardian / Naga, Spirit / Night Hag / Oni, Ogre Mage / Rakshasa / Vampire
+Sort : lightningBolt	 is used by : Azata, Bralani / Devil, Horned / Chromatic Dragon, White / Drider / Naga, Dark / Naga, Guardian / Rakshasa
+Sort : etherealJaunt	 is used by : Angel, Solar / Couatl / Demon, Succubus / Genie, Janni / Nightmare, Cauchemar / Phase Spider
+Sort : acidArrow	 is used by : Mephit / Rakshasa
+Sort : commandPlants	 is used by : Chromatic Dragon, Green
+Sort : majorCreation	 is used by : Genie, Djinni
+Sort : flare	 is used by : Metallic Dragon, Silver
+Sort : raiseDead	 is used by : Angel, Planetar / Archon, Trumpet / Azata, Ghaele / Spectre / Wight
+Sort : polymorphAnyObject	 is used by : Golem, Iron
+Sort : magicCircleAgainstEvil	 is used by : Angel, Solar / Archon, Hound / Archon, Trumpet / Couatl / Half-Celestial
+Sort : planarBinding	 is used by : Retriever
+Sort : phantomTrap	 is used by : Metallic Dragon, Copper
+Sort : resurrection	 is used by : Angel, Solar / Metallic Dragon, Gold / Golem, Clay / Half-Celestial / Intellect Devourer / Mummy / Phoenix
+Sort : blackTentacles	 is used by : Chromatic Dragon, Black
+Sort : knock	 is used by : Azata, Lillend
+Sort : undeathToDeath	 is used by : Angel, Solar
+Sort : wallOfStone	 is used by : Metallic Dragon, Copper / Genie, Shaitan
+Sort : hypnotism	 is used by : Devourer / Pixie
+Sort : balefulPolymorph	 is used by : Green Hag / Pixie
+Sort : speakWithPlants	 is used by : Azata, Lillend / Dryad / Treant
+Sort : sunburst	 is used by : Metallic Dragon, Gold
+Sort : createFoodAndWater	 is used by : Metallic Dragon, Bronze / Genie, Djinni / Genie, Janni
+Sort : treeStride	 is used by : Dryad
+Sort : daylight	 is used by : Aasimar / Angel, Planetar / Angel, Solar / Archon, Trumpet / Metallic Dragon, Gold / Spectre
+Sort : wallOfFire	 is used by : Devil, Pit Fiend / Chromatic Dragon, Red / Genie, Efreeti / Phoenix
+Sort : maze	 is used by : Devourer / Minotaur / Will-o'-Wisp
+Sort : dispelGood	 is used by : Devil, Horned
+Sort : ghostSound	 is used by : Derro / Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Copper / Drider / Green Hag / Rakshasa / Satyr
+Sort : arcaneMark	 is used by : Chromatic Dragon, Blue / Chromatic Dragon, Red / Metallic Dragon, Brass
+Sort : regenerate	 is used by : Angel, Planetar / Angel, Solar / Demon, Nabasu
+Sort : prestidigitation	 is used by : Chromatic Dragon, Black / Chromatic Dragon, Green / Chromatic Dragon, Red / Metallic Dragon, Brass / Metallic Dragon, Copper / Metallic Dragon, Silver / Mite / Rakshasa
+Sort : shatter	 is used by : Chromatic Dragon, Blue
+Sort : scrying	 is used by : Devil, Pit Fiend / Chromatic Dragon, Green
+Sort : falseLife	 is used by : Chromatic Dragon, Blue / Lich / Vampire
+Sort : coneOfCold	 is used by : Devil, Ice / Chromatic Dragon, Black / Genie, Marid / Golem, Ice / Lich / Oni, Ogre Mage
+Sort : fleshToStone	 is used by : Basilisk / Cockatrice / Gorgon
+Sort : trueStrike	 is used by : Couatl / Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Bronze / Metallic Dragon, Silver
+Sort : deathWard	 is used by : Angel, Planetar / Angel, Solar / Azata, Ghaele
+Sort : cloudkill	 is used by : Golem, Iron / Lich
+Sort : mending	 is used by : Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Gold / Homunculus / Rakshasa / Vampire
+Sort : divinePower	 is used by : Archon, Trumpet / Azata, Ghaele / Naga, Guardian
+Sort : light	 is used by : Azata, Lillend / Couatl / Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Red / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Gold / Metallic Dragon, Silver / Half-Celestial / Naga, Dark / Naga, Guardian / Nymph / Unicorn / Vampire
+Sort : hallow	 is used by : Half-Celestial
+Sort : windWall	 is used by : Angel, Planetar / Angel, Solar / Azata, Bralani / Metallic Dragon, Silver / Mephit
+Sort : chillTouch	 is used by : Golem, Ice / Vampire
+Sort : detectLaw	 is used by : Couatl / Drider / Night Hag / Pixie
+Sort : orderSWrath	 is used by : Devil, Barbed
+Sort : freedomOfMovement	 is used by : Couatl / Metallic Dragon, Silver / Giant, Storm / Linnorm, Crag / Linnorm, Ice / Linnorm, Tarn
+Sort : bladeBarrier	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Demon, Marilith
+Sort : barkskin	 is used by : Nymph
+Sort : foresight	 is used by : Metallic Dragon, Gold
+Sort : holyWord	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Azata, Ghaele / Devourer / Metallic Dragon, Silver / Half-Celestial
+Sort : aid	 is used by : Angel, Astral Deva / Angel, Solar / Archon, Hound / Archon, Lantern / Archon, Trumpet / Azata, Ghaele / Metallic Dragon, Gold / Half-Celestial
+Sort : hallucinatoryTerrain	 is used by : Azata, Lillend / Chromatic Dragon, Blue
+Sort : fireStorm	 is used by : Angel, Planetar / Angel, Solar / Demon, Balor / Phoenix
+Sort : symbolOfPain	 is used by : Sphinx
+Sort : status	 is used by : Nymph
+Sort : dancingLights	 is used by : Azata, Ghaele / Azata, Lillend / Chromatic Dragon, Black / Chromatic Dragon, Green / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Copper / Drider / Drow / Green Hag / Pixie / Rakshasa / Satyr
+Sort : darkness	 is used by : Azata, Lillend / Dark Creeper / Darkmantle / Demon, Babau / Derro / Chromatic Dragon, Black / Chromatic Dragon, Blue / Drider / Drow / Half-Fiend / Lich / Oni, Ogre Mage / Tiefling
+Sort : createWater	 is used by : Chromatic Dragon, Blue / Genie, Djinni / Genie, Marid
+Sort : ventriloquism	 is used by : Chromatic Dragon, Blue / Chromatic Dragon, Green / Metallic Dragon, Brass / Lamia
+Sort : rainbowPattern	 is used by : Metallic Dragon, Copper
+Sort : shield	 is used by : Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Gold / Metallic Dragon, Silver / Lich / Naga, Dark / Pixie / Rakshasa
+Sort : stoneskin	 is used by : Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, Red / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Gold / Genie, Shaitan / Gorgon
+Sort : planeShift	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Archon, Trumpet / Bebilith / Couatl / Demon, Quasit / Metallic Dragon, Gold / Metallic Dragon, Silver / Genie, Djinni / Genie, Efreeti / Genie, Janni / Genie, Marid / Genie, Shaitan / Nightmare / Nightmare, Cauchemar
+Sort : modifyMemory	 is used by : Pixie
+Sort : wallOfForce	 is used by : Azata, Ghaele / Chromatic Dragon, Black / Chromatic Dragon, Red / Metallic Dragon, Silver
+Sort : seeInvisibility	 is used by : Angel, Astral Deva / Azata, Ghaele / Demon, Babau / Chromatic Dragon, Green / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Copper / Genie, Marid / Lich / Naga, Guardian / Phoenix / Sphinx
+Sort : enervation	 is used by : Demon, Nabasu / Chromatic Dragon, Blue / Lich
+Sort : breakEnchantment	 is used by : Angel, Planetar / Angel, Solar / Metallic Dragon, Silver
+Sort : protectionFromChaos	 is used by : Couatl
+Sort : teleportObject	 is used by : Metallic Dragon, Copper
+Sort : powerWordKill	 is used by : Angel, Solar / Metallic Dragon, Copper
+Sort : softenEarthAndStone	 is used by : Genie, Shaitan / Mephit
+Sort : rayOfEnfeeblement	 is used by : Devourer / Drider / Lich / Naga, Dark / Night Hag
+Sort : scorchingRay	 is used by : Couatl / Devil, Barbed / Devil, Pit Fiend / Genie, Efreeti / Lich / Mephit / Naga, Dark / Naga, Guardian / Vampire
+Sort : slow	 is used by : Demon, Nalfeshnee / Devil, Ice / Chromatic Dragon, Black / Metallic Dragon, Bronze / Metallic Dragon, Copper / Golem, Clay / Golem, Flesh / Golem, Ice / Golem, Iron / Golem, Stone / Golem, Wood
+Sort : produceFlame	 is used by : Devil, Barbed / Genie, Efreeti / Nymph
+Sort : detectPoison	 is used by : Drow / Phoenix
+Sort : confusion	 is used by : Demon, Glabrezu / Devourer / Metallic Dragon, Brass / Metallic Dragon, Copper / Gray Ooze / Intellect Devourer / Pixie
+Sort : teleport	 is used by : Archon, Hound / Archon, Lantern / Archon, Trumpet / Azata, Ghaele / Demon, Babau / Demon, Balor / Demon, Glabrezu / Demon, Hezrou / Demon, Marilith / Demon, Nabasu / Demon, Nalfeshnee / Demon, Shadow / Demon, Succubus / Demon, Vrock / Devil, Barbed / Devil, Bearded / Devil, Bone / Devil, Erinyes / Devil, Horned / Devil, Ice / Devil, Pit Fiend / Chromatic Dragon, Green / Chromatic Dragon, Red / Metallic Dragon, Brass / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Gold / Half-Celestial / Lich / Neothelid / Unicorn
+Sort : nondetection	 is used by : Sea Serpent / Svirfneblin
+Sort : dream	 is used by : Chromatic Dragon, Blue / Green Hag
+Sort : mageArmor	 is used by : Couatl / Chromatic Dragon, Black / Chromatic Dragon, Blue / Metallic Dragon, Bronze / Metallic Dragon, Gold / Drider / Lich / Naga, Guardian / Rakshasa / Vampire
+Sort : reincarnate	 is used by : Green Hag
+Sort : limitedWish	 is used by : Chromatic Dragon, Red / Golem, Flesh / Golem, Iron / Golem, Stone / Golem, Wood
+Sort : windWalk	 is used by : Azata, Bralani / Genie, Djinni
+Sort : forcecage	 is used by : Green Hag
+Sort : disguiseSelf	 is used by : Azata, Ghaele / Green Hag / Lamia / Svirfneblin / Vampire
+Sort : cureCriticalWounds	 is used by : Angel, Solar / Phoenix
+Sort : vampiricTouch	 is used by : Demon, Nabasu / Demon, Succubus / Devourer / Chromatic Dragon, Blue / Lich / Vampire
+Sort : contingency	 is used by : Chromatic Dragon, Red
+Sort : discernLocation	 is used by : Chromatic Dragon, Red / Iron Cobra / Retriever
+Sort : grease	 is used by : Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Copper
+Sort : vision	 is used by : Green Hag
+Sort : animateRope	 is used by : Devil, Erinyes
+Sort : magicMissile	 is used by : Chromatic Dragon, Black / Chromatic Dragon, Green / Chromatic Dragon, Red / Metallic Dragon, Copper / Drider / Lich / Mephit / Naga, Dark / Naga, Guardian / Naga, Spirit / Night Hag / Rakshasa / Tarrasque / Vampire / Will-o'-Wisp
+Sort : magicCircleAgainstGood	 is used by : Devil, Horned / Devil, Pit Fiend
+Sort : bleed	 is used by : Chromatic Dragon, Blue / Chromatic Dragon, Red / Drider / Drow / Lich / Naga, Spirit
+Sort : sleep	 is used by : Azata, Lillend / Satyr
+Sort : sunbeam	 is used by : Demon, Shadow
+Sort : contagion	 is used by : Half-Fiend / Zombie
+Sort : acidSplash	 is used by : Chromatic Dragon, White / Vampire
+Sort : lullaby	 is used by : Azata, Lillend
+Sort : illusoryWall	 is used by : Aboleth
+Sort : removeCurse	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Phoenix / Sphinx
+Sort : dominatePerson	 is used by : Demon, Succubus / Devourer / Chromatic Dragon, Green / Metallic Dragon, Brass / Lich / Vampire
+Sort : unhallow	 is used by : Half-Fiend
+Sort : speakWithAnimals	 is used by : Azata, Lillend / Chromatic Dragon, Black / Metallic Dragon, Brass / Metallic Dragon, Bronze / Genie, Janni
+Sort : tongues	 is used by : Demon, Succubus / Chromatic Dragon, Red / Metallic Dragon, Brass / Metallic Dragon, Copper / Green Hag
+Sort : controlWinds	 is used by : Metallic Dragon, Brass / Metallic Dragon, Silver / Kraken
+Sort : trueSeeing	 is used by : Angel, Planetar / Angel, Solar / Azata, Bralani / Azata, Ghaele / Demon, Balor / Demon, Glabrezu / Demon, Marilith / Demon, Nalfeshnee / Devil, Erinyes / Devourer / Chromatic Dragon, Green / Metallic Dragon, Gold / Linnorm, Crag / Linnorm, Ice / Linnorm, Tarn
+Sort : gentleRepose	 is used by : Intellect Devourer
+Sort : discernLies	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar
+Sort : meldIntoStone	 is used by : Dryad / Genie, Shaitan
+Sort : elementalSwarm	 is used by : Genie, Marid
+Sort : hypnoticPattern	 is used by : Aboleth
+Sort : dismissal	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Metallic Dragon, Bronze
+Sort : commune	 is used by : Angel, Solar / Demon, Quasit / Devil, Imp / Golem, Clay / Green Hag
+Sort : animateObjects	 is used by : Angel, Solar / Animated Object / Golem, Clay / Golem, Wood
+Sort : stabilize	 is used by : Aasimar / Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Metallic Dragon, Gold / Metallic Dragon, Silver / Naga, Guardian / Nymph
+Sort : dispelEvil	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Archon, Trumpet / Demon, Succubus / Devourer / Metallic Dragon, Gold / Half-Celestial
+Sort : alarm	 is used by : Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Gold / Metallic Dragon, Silver / Golem, Wood
+Sort : command	 is used by : Aasimar / Azata, Ghaele
+Sort : silentImage	 is used by : Cloaker / Chromatic Dragon, Green / Metallic Dragon, Copper / Drider / Naga, Dark / Rakshasa
+Sort : wallOfIce	 is used by : Devil, Bone / Devil, Ice / Chromatic Dragon, White / Lich
+Sort : summonMonster	 is used by : Angel, Planetar / Angel, Solar / Couatl / Chromatic Dragon, Green / Half-Celestial / Half-Fiend
+Sort : forcefulHand	 is used by : Chromatic Dragon, Blue / Metallic Dragon, Brass
+Sort : holdPerson	 is used by : Azata, Lillend / Demon, Nabasu / Devil, Barbed / Chromatic Dragon, Black / Metallic Dragon, Brass / Metallic Dragon, Silver / Drow
+Sort : entropicShield	 is used by : Angel, Solar
+Sort : whisperingWind	 is used by : Chromatic Dragon, Black / Green Hag
+Sort : magicJar	 is used by : Demon, Shadow / Devourer / Ghost
+Sort : dictum	 is used by : Angel, Solar
+Sort : cureSeriousWounds	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Bralani / Azata, Ghaele / Azata, Lillend / Metallic Dragon, Silver / Half-Celestial / Naga, Guardian
+Sort : treeShape	 is used by : Dryad / Green Hag / Nymph
+Sort : poison	 is used by : Metallic Dragon, Brass / Half-Fiend / Neothelid
+Sort : waterBreathing	 is used by : Genie, Marid / Green Hag / Nymph
+Sort : suggestion	 is used by : Azata, Lillend / Demon, Succubus / Devil, Imp / Devourer / Chromatic Dragon, Green / Chromatic Dragon, Red / Metallic Dragon, Brass / Metallic Dragon, Bronze / Metallic Dragon, Copper / Drider / Drow / Dryad / Lamia / Lich / Neothelid / Rakshasa / Satyr
+Sort : protectionFromEnergy	 is used by : Angel, Solar / Archon, Trumpet
+Sort : wavesOfExhaustion	 is used by : Angel, Planetar / Angel, Solar
+Sort : blight	 is used by : Green Hag
+Sort : circleOfDeath	 is used by : Lich
+Sort : wordOfRecall	 is used by : Angel, Solar
+Sort : inflictSeriousWounds	 is used by : Devourer / Intellect Devourer
+Sort : stinkingCloud	 is used by : Demon, Dretch / Mephit
+Sort : bless	 is used by : Aasimar / Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Demon, Vrock / Metallic Dragon, Gold / Metallic Dragon, Silver / Drow / Golem, Clay / Half-Celestial
+Sort : readMagic	 is used by : Azata, Lillend / Couatl / Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Red / Metallic Dragon, Copper / Metallic Dragon, Silver / Drider / Drow / Lich / Naga, Dark / Naga, Guardian / Naga, Spirit / Sphinx / Vampire
+Sort : detectMagic#detect-magic	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele
+Sort : soundBurst	 is used by : Azata, Lillend / Derro
+Sort : spellTurning	 is used by : Chromatic Dragon, Red / Metallic Dragon, Bronze / Metallic Dragon, Silver
+Sort : dimensionDoor	 is used by : Barghest / Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, White / Metallic Dragon, Bronze / Metallic Dragon, Silver / Lich / Nymph
+Sort : protectionFromEvil	 is used by : Aasimar / Metallic Dragon, Brass / Metallic Dragon, Silver / Half-Celestial / Intellect Devourer
+Sort : controlUndead	 is used by : Devourer
+Sort : slayLiving	 is used by : Devourer
+Sort : mageHand	 is used by : Azata, Lillend / Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Copper / Drider / Naga, Dark / Naga, Guardian / Naga, Spirit / Rakshasa / Vampire
+Sort : trueResurrection	 is used by : Chromatic Dragon, Red
+Sort : antimagicField	 is used by : Chromatic Dragon, Red / Metallic Dragon, Copper / Metallic Dragon, Gold / Golem, Stone
+Sort : causeFear	 is used by : Demon, Dretch / Demon, Quasit / Drow
+Sort : blasphemy	 is used by : Demon, Balor / Demon, Hezrou / Devil, Pit Fiend / Half-Fiend
+Sort : symbolOfStunning	 is used by : Golem, Stone / Sphinx
+Sort : glitterdust	 is used by : Chromatic Dragon, Black / Metallic Dragon, Copper / Genie, Shaitan / Mephit
+Sort : sanctuary	 is used by : Archon, Trumpet
+Sort : stoneToFlesh	 is used by : Golem, Stone
+Sort : detectThoughts	 is used by : Azata, Ghaele / Couatl / Demon, Succubus / Devourer / Doppelganger / Chromatic Dragon, Green / Chromatic Dragon, Red / Metallic Dragon, Brass / Metallic Dragon, Bronze / Naga, Dark / Naga, Guardian / Neothelid / Pixie
+Sort : spectralHand	 is used by : Devourer / Lich
+Sort : shieldOfFaith	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Metallic Dragon, Gold / Naga, Spirit
+Sort : waterWalk	 is used by : Genie, Marid / Retriever
+Sort : insectPlague	 is used by : Chromatic Dragon, Black
+Sort : contactOtherPlane	 is used by : Metallic Dragon, Brass
+Sort : spiderClimb	 is used by : Chromatic Dragon, White / Metallic Dragon, Copper / Morlock / Retriever / Vampire
+Sort : permanency	 is used by : Angel, Solar
+Sort : removeDisease	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Half-Celestial / Vargouille / Vegepygmy / Xill
+Sort : elementalBody	 is used by : Genie, Marid
+Sort : charmPerson	 is used by : Azata, Bralani / Azata, Lillend / Chromatic Dragon, Green / Metallic Dragon, Brass / Dryad / Naga, Spirit / Rakshasa / Satyr
+Sort : unholyAura	 is used by : Demon, Balor / Demon, Marilith / Demon, Nalfeshnee / Devil, Pit Fiend / Half-Fiend
+Sort : legendLore	 is used by : Sphinx
+Sort : irresistibleDance	 is used by : Pixie
+Sort : fly	 is used by : Demon, Marilith / Devil, Bone / Devil, Ice / Neothelid / Oni, Ogre Mage
+Sort : rustingGrasp	 is used by : Genie, Shaitan / Golem, Iron
+Sort : ghoulTouch	 is used by : Devourer
+Sort : chaosHammer	 is used by : Demon, Glabrezu / Demon, Hezrou / Devourer
+Sort : message	 is used by : Archon, Hound / Archon, Trumpet / Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Silver / Rakshasa / Vampire
+Sort : beastShape	 is used by : Archon, Hound / Devil, Imp / Pixie / Vampire
+Sort : spellImmunity	 is used by : Archon, Trumpet / Metallic Dragon, Gold
+Sort : gaseousForm	 is used by : Couatl / Demon, Hezrou / Genie, Djinni / Genie, Efreeti / Genie, Marid / Oni, Ogre Mage / Vampire
+Sort : bearSEndurance	 is used by : Angel, Planetar / Angel, Solar / Azata, Ghaele
+Sort : crushingDespair	 is used by : Barghest / Devourer
+Sort : prayer	 is used by : Angel, Solar / Metallic Dragon, Gold / Golem, Clay
+Sort : shadowConjuration	 is used by : Demon, Shadow
+Sort : repulsion	 is used by : Metallic Dragon, Bronze / Metallic Dragon, Silver
+Sort : bullSStrength	 is used by : Angel, Solar / Archon, Trumpet / Barghest / Golem, Flesh / Gorgon
+Sort : geasQuest	 is used by : Devourer / Metallic Dragon, Gold / Golem, Flesh / Golem, Ice / Golem, Iron / Golem, Stone / Golem, Wood / Iron Cobra
+Sort : deeperDarkness	 is used by : Dark Creeper / Dark Stalker / Demon, Nabasu / Demon, Shadow / Drider / Drow
+Sort : righteousMight	 is used by : Angel, Planetar / Angel, Solar
+Sort : blink	 is used by : Barghest
+Sort : detectGood	 is used by : Couatl / Demon, Quasit / Demon, Succubus / Devil, Imp / Drider / Genie, Marid / Night Hag / Pegasus / Pixie
+Sort : resistEnergy	 is used by : Angel, Solar / Chromatic Dragon, Blue / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Gold / Golem, Ice / Kraken / Nymph
+Sort : summonSwarm	 is used by : Chromatic Dragon, Black / Naga, Spirit
+Sort : misdirection	 is used by : Barghest / Chromatic Dragon, Red
+Sort : displacement	 is used by : Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Brass / Naga, Dark / Naga, Spirit
+Sort : permanentImage	 is used by : Genie, Efreeti / Genie, Marid / Pixie
+Sort : endureElements	 is used by : Couatl / Metallic Dragon, Brass / Nymph
+Sort : woodShape	 is used by : Dryad / Golem, Wood
+Sort : mirageArcana	 is used by : Aboleth / Chromatic Dragon, Blue / Metallic Dragon, Brass / Green Hag
+Sort : detectEvil	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Archon, Hound / Archon, Lantern / Archon, Trumpet / Azata, Ghaele / Couatl / Metallic Dragon, Gold / Metallic Dragon, Silver / Genie, Marid / Half-Celestial / Night Hag / Pegasus / Pixie / Unicorn
+Sort : callLightning	 is used by : Demon, Nalfeshnee / Giant, Storm / Nymph
+Sort : dazeMonster	 is used by : Intellect Devourer
+Sort : stormOfVengeance	 is used by : Angel, Solar
+Sort : powerWordStun	 is used by : Angel, Planetar / Angel, Solar / Demon, Balor / Demon, Glabrezu / Devil, Pit Fiend
+Sort : solidFog	 is used by : Metallic Dragon, Bronze / Metallic Dragon, Silver
+Sort : magicAura	 is used by : Chromatic Dragon, White / Metallic Dragon, Copper
+Sort : transmuteMudToRock	 is used by : Metallic Dragon, Copper / Giant, Stone / Golem, Stone
+Sort : hideousLaughter	 is used by : Metallic Dragon, Copper / Pixie
+Sort : searingLight	 is used by : Azata, Ghaele
+Sort : stoneShape	 is used by : Chromatic Dragon, White / Metallic Dragon, Copper / Genie, Shaitan / Giant, Stone
+Sort : callLightningStorm	 is used by : Chromatic Dragon, Blue
+Sort : majorImage	 is used by : Azata, Ghaele / Devil, Barbed / Devil, Bone / Metallic Dragon, Copper / Lamia
+Sort : protectionFromLaw	 is used by : Drow
+Sort : gustOfWind	 is used by : Azata, Bralani / Chromatic Dragon, Green / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Bronze / Mephit
+Sort : globeOfInvulnerability	 is used by : Azata, Ghaele / Intellect Devourer / Lich
+Sort : disintegrate	 is used by : Chromatic Dragon, Green / Golem, Clay / Phoenix
+Sort : persistentImage	 is used by : Aboleth / Devil, Horned / Devil, Ice / Devil, Pit Fiend / Chromatic Dragon, Blue / Genie, Djinni / Genie, Marid
+Sort : invisibilityPurge	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Metallic Dragon, Gold / Invisible Stalker
+Sort : cureLightWounds	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Azata, Lillend / Drow / Half-Celestial / Naga, Guardian / Naga, Spirit / Unicorn
+Sort : alignWeapon	 is used by : Angel, Planetar / Angel, Solar / Azata, Ghaele
+Sort : planarAlly	 is used by : Couatl / Devourer / Retriever
+Sort : divination	 is used by : Metallic Dragon, Gold / Genie, Janni
+Sort : daze	 is used by : Azata, Lillend / Couatl / Derro / Drider / Naga, Dark / Naga, Guardian / Naga, Spirit
+Sort : holdMonster	 is used by : Azata, Ghaele / Cloaker / Devil, Pit Fiend / Chromatic Dragon, Blue
+Sort : animateDead	 is used by : Devourer / Golem, Flesh / Green Hag / Skeleton / Zombie
+Sort : summonNatureSAlly	 is used by : Nymph / Satyr
+Sort : haste	 is used by : Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, Red / Metallic Dragon, Copper / Metallic Dragon, Gold / Zombie
+Sort : powerWordBlind	 is used by : Angel, Solar / Metallic Dragon, Brass
+Sort : polymorph	 is used by : Barghest / Doppelganger / Chromatic Dragon, Green / Chromatic Dragon, Red / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Gold / Metallic Dragon, Silver / Lycanthrope, Wererat / Lycanthrope, Werewolf
+Sort : feeblemind	 is used by : Demon, Nalfeshnee
+Sort : blur	 is used by : Azata, Bralani / Cloaker / Chromatic Dragon, Black / Metallic Dragon, Bronze / Mephit / Svirfneblin
+Sort : symbolOfFear	 is used by : Sphinx
+Sort : stoneTell	 is used by : Genie, Shaitan / Giant, Stone
+Sort : projectImage	 is used by : Aboleth / Demon, Marilith / Chromatic Dragon, Blue
+Sort : reverseGravity	 is used by : Demon, Glabrezu / Metallic Dragon, Copper / Metallic Dragon, Silver
+Sort : detectChaos	 is used by : Couatl / Night Hag / Pixie
+Sort : charmMonster	 is used by : Angel, Planetar / Angel, Solar / Azata, Ghaele / Azata, Lillend / Barghest / Couatl / Demon, Succubus / Chromatic Dragon, Black / Chromatic Dragon, White / Metallic Dragon, Brass / Green Hag / Half-Celestial / Lamia / Neothelid / Oni, Ogre Mage / Pixie
+Sort : bestowCurse	 is used by : Devourer / Green Hag / Lich
+Sort : consecrate	 is used by : Angel, Solar / Archon, Trumpet
+Sort : heatMetal	 is used by : Genie, Efreeti / Mephit
+Sort : cureModerateWounds	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Couatl / Metallic Dragon, Gold / Metallic Dragon, Silver / Half-Celestial / Intellect Devourer / Nymph / Unicorn
+Sort : freedom	 is used by : Chromatic Dragon, White
+Sort : blindnessDeafness	 is used by : Svirfneblin
+Sort : fireball	 is used by : Dark Stalker / Devil, Horned / Devil, Pit Fiend / Chromatic Dragon, Green / Genie, Efreeti / Lich / Naga, Spirit / Vampire
+Sort : magicVestment	 is used by : Archon, Trumpet
+Sort : whirlwind	 is used by : Metallic Dragon, Brass
+Sort : statue	 is used by : Metallic Dragon, Bronze / Golem, Ice / Gorgon
+Sort : purifyFoodAndDrink	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Genie, Marid
+Sort : unholyBlight	 is used by : Demon, Glabrezu / Demon, Hezrou / Devil, Barbed / Devil, Erinyes / Half-Fiend
+Sort : pryingEyes	 is used by : Metallic Dragon, Brass
+Sort : deepSlumber	 is used by : Dryad / Lamia / Night Hag / Oni, Ogre Mage
+Sort : miracle	 is used by : Angel, Solar / Derro / Devourer / Metallic Dragon, Gold
+Sort : invisibilitySphere	 is used by : Barghest
+Sort : owlSWisdom	 is used by : Archon, Trumpet
+Sort : sending	 is used by : Metallic Dragon, Copper
+Sort : destruction	 is used by : Angel, Solar / Half-Fiend
+Sort : continualFlame	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Archon, Hound / Archon, Lantern / Archon, Trumpet / Azata, Ghaele / Phoenix
+Sort : dispelMagic	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Azata, Ghaele / Demon, Babau / Demon, Balor / Demon, Glabrezu / Demon, Nalfeshnee / Devil, Pit Fiend / Chromatic Dragon, Black / Chromatic Dragon, Blue / Chromatic Dragon, Green / Chromatic Dragon, Red / Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Bronze / Metallic Dragon, Copper / Metallic Dragon, Gold / Metallic Dragon, Silver / Drider / Drow / Elemental, Water / Lich / Naga, Guardian / Phoenix / Pixie / Sphinx / Vampire
+Sort : unseenServant	 is used by : Chromatic Dragon, Blue
+Sort : wavesOfFatigue	 is used by : Angel, Planetar / Angel, Solar / Lich
+Sort : enlargePerson	 is used by : Duergar / Genie, Efreeti / Genie, Janni / Mephit
+Sort : identify	 is used by : Azata, Lillend / Metallic Dragon, Copper
+Sort : charmAnimal	 is used by : Nymph
+Sort : alterSelf	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Demon, Succubus / Doppelganger / Chromatic Dragon, Green / Chromatic Dragon, Red / Metallic Dragon, Brass / Genie, Efreeti / Genie, Marid / Green Hag / Night Hag / Oni, Ogre Mage / Rakshasa
+Sort : doom	 is used by : Mite
+Sort : plantGrowth	 is used by : Chromatic Dragon, Black / Chromatic Dragon, Green
+Sort : resistance	 is used by : Couatl / Chromatic Dragon, Black / Chromatic Dragon, Blue / Metallic Dragon, Bronze / Metallic Dragon, Silver / Drider / Drow
+Sort : locateCreature	 is used by : Metallic Dragon, Brass
+Sort : augury	 is used by : Devil, Imp / Metallic Dragon, Silver / Genie, Janni
+Sort : levitate	 is used by : Barghest / Drider / Drow / Giant, Cloud / Giant, Storm
+Sort : neutralizePoison	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Half-Celestial / Unicorn
+Sort : calmEmotions	 is used by : Metallic Dragon, Silver
+Sort : obscuringMist	 is used by : Azata, Ghaele / Couatl / Chromatic Dragon, Black / Metallic Dragon, Bronze / Metallic Dragon, Copper / Genie, Marid / Giant, Cloud / Nightmare / Nymph
+Sort : implosion	 is used by : Demon, Balor
+Sort : pyrotechnics	 is used by : Devil, Barbed / Chromatic Dragon, Red / Metallic Dragon, Copper / Genie, Efreeti / Green Hag / Mephit
+Sort : symbolOfPersuasion	 is used by : Sphinx
+Sort : soulBind	 is used by : Night Hag
+Sort : dominateMonster	 is used by : Aboleth / Demon, Balor / Intellect Devourer / Kraken
+Sort : fireShield	 is used by : Chromatic Dragon, Blue / Chromatic Dragon, Red / Lich
+Sort : passWithoutTrace	 is used by : Green Hag / Sea Serpent
+Sort : divineFavor	 is used by : Angel, Solar / Archon, Trumpet / Azata, Ghaele / Metallic Dragon, Gold / Metallic Dragon, Silver / Drow / Naga, Guardian / Naga, Spirit
+Sort : reducePerson	 is used by : Genie, Efreeti / Genie, Janni / Intellect Devourer
+Sort : guidance	 is used by : Aasimar / Nymph
+Sort : heal	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Demon, Balor / Metallic Dragon, Gold / Metallic Dragon, Silver / Phoenix / Vegepygmy
+Sort : shadowEvocation	 is used by : Demon, Shadow
+Sort : telekinesis	 is used by : Demon, Balor / Demon, Marilith / Demon, Nabasu / Demon, Shadow / Demon, Vrock / Chromatic Dragon, Red / Ghost / Neothelid
+Sort : controlWater	 is used by : Metallic Dragon, Bronze / Genie, Marid
+Sort : mindBlank	 is used by : Green Hag
+Sort : desecrate	 is used by : Half-Fiend / Phoenix
+Sort : openClose	 is used by : Chromatic Dragon, Red / Metallic Dragon, Copper / Naga, Dark / Naga, Guardian / Naga, Spirit / Vampire
+Sort : symbolOfSleep	 is used by : Angel, Solar / Sphinx
+Sort : holyAura	 is used by : Angel, Astral Deva / Angel, Solar / Azata, Ghaele / Half-Celestial
+Sort : disruptUndead	 is used by : Couatl
+Sort : fear	 is used by : Demon, Shadow / Devil, Erinyes / Devourer / Chromatic Dragon, Red / Pixie / Satyr
+Sort : acidFog	 is used by : Chromatic Dragon, White
+Sort : prismaticSpray	 is used by : Angel, Solar / Azata, Ghaele
+Sort : expeditiousRetreat	 is used by : Metallic Dragon, Copper / Naga, Dark / Naga, Guardian / Vampire
+Sort : programmedImage	 is used by : Aboleth / Metallic Dragon, Copper
+Sort : speakWithDead	 is used by : Angel, Planetar / Angel, Solar / Green Hag
+Sort : web	 is used by : Metallic Dragon, Bronze / Metallic Dragon, Silver / Drider / Vampire
+Sort : holySmite	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar / Half-Celestial
+Sort : interposingHand	 is used by : Metallic Dragon, Bronze
+Sort : findThePath	 is used by : Chromatic Dragon, Red
+Sort : eagleSSplendor	 is used by : Angel, Planetar / Angel, Solar / Couatl
+Sort : removeParalysis	 is used by : Zombie
+Sort : catSGrace	 is used by : Golem, Wood / Naga, Dark / Naga, Spirit
+Sort : heroesFeast	 is used by : Angel, Solar
+Sort : trapTheSoul	 is used by : Devil, Pit Fiend / Devourer
+Sort : veil	 is used by : Aboleth / Demon, Glabrezu / Chromatic Dragon, Blue / Genie, Shaitan / Green Hag
+Sort : earthquake	 is used by : Angel, Planetar / Angel, Solar / Genie, Shaitan / Golem, Clay
+Sort : arcaneEye	 is used by : Chromatic Dragon, Black / Homunculus
+Sort : rayOfFrost	 is used by : Couatl / Chromatic Dragon, White / Drider / Lich / Naga, Dark / Naga, Guardian / Naga, Spirit
+Sort : quench	 is used by : Genie, Marid
+Sort : heroism	 is used by : Demon, Vrock / Chromatic Dragon, Black / Metallic Dragon, Brass / Metallic Dragon, Bronze
+Sort : removeFear	 is used by : Angel, Astral Deva / Angel, Planetar / Angel, Solar
+Sort : restoration	 is used by : Angel, Planetar / Angel, Solar / Archon, Trumpet / Azata, Ghaele / Metallic Dragon, Gold / Metallic Dragon, Silver / Naga, Guardian / Phoenix
+Sort : controlWeather	 is used by : Chromatic Dragon, White / Metallic Dragon, Brass / Metallic Dragon, Bronze / Metallic Dragon, Silver / Giant, Storm / Green Hag / Kraken
+Sort : moveEarth	 is used by : Metallic Dragon, Brass / Metallic Dragon, Copper / Elemental, Earth / Golem, Clay / Xorn
