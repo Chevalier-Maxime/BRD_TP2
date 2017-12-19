@@ -1,6 +1,7 @@
-package exercice2
+package exercice2.Monstres
 
 import exercice2.TypeAction.TypeAction
+import exercice2._
 import org.apache.spark.graphx.{EdgeContext, VertexId}
 
 import scala.collection.mutable.ArrayBuffer
@@ -36,7 +37,7 @@ abstract class Monstre(
   }
 
 
-  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): _root_.exercice2.Monstre
+  def receptionnerAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[message2]): Monstre
 
   def getNom() : String = {
     this.nom
@@ -54,7 +55,7 @@ abstract class Monstre(
   //TODO Changer le type de message
   def executeAction(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[message2]]): Unit
 
-  def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]): _root_.exercice2.Monstre
+  def choisirAction(vid: VertexId, monstres: Monstre, msgs: ArrayBuffer[msg]): Monstre
 
 
   def actionPossible(triplet: EdgeContext[Monstre, EdgeProperty, ArrayBuffer[msg]]): Unit
@@ -139,7 +140,7 @@ def calculDeplacement( positionAAtteindre: Position, nbDeplacement : Int): Posit
   }
 
   override def toString: String = {
-    super.toString + " next : " + this.nextAction + " en vie :" + this.vivant + " position : " + this.position
+    super.toString + ", Point de vie : " + this.PDV + "/" + this.PDVmax + " position : " + this.position
   }
 
   def addPDV(vie: Int): Unit ={

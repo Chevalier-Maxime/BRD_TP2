@@ -2,6 +2,7 @@ import java.io.{File, PrintWriter}
 import java.net.URL
 
 import exercice1.Crawler
+import exercice2.Monstres._
 import exercice2._
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
@@ -327,11 +328,12 @@ object Main extends App {
 
         var graph = Graph(monstres,vertex)
 
+        var round = 1
 
         def executionDeLalgorithme() : Unit = {
           while (true){
             println("------------------------------------------------------------------------------")
-            println("                        ETAT  INITIAL                                         ")
+            println("                        ETAT  INITIAL  "+round+"                                       ")
             println("------------------------------------------------------------------------------")
 
             graph.vertices.collect().foreach(println)
@@ -350,7 +352,7 @@ object Main extends App {
 
 
             println("------------------------------------------------------------------------------")
-            println("                        ACTIONS POSSIBLES                                     ")
+            println("                        ACTIONS POSSIBLES    "+round+"                                 ")
             println("------------------------------------------------------------------------------")
 
             var ttt = actionTodo.collect().foreach(println)
@@ -364,7 +366,7 @@ object Main extends App {
             //var res = graph.vertices.take(graph.numVertices.toInt)
 
             println("------------------------------------------------------------------------------")
-            println("                       CHOIX ACTION                                      ")
+            println("                       CHOIX ACTION       "+round+"                               ")
             println("------------------------------------------------------------------------------")
 
             graph.vertices.collect().foreach(println)
@@ -378,7 +380,7 @@ object Main extends App {
 
 
             println("------------------------------------------------------------------------------")
-            println("                        EXECUTE ACTIONS                                     ")
+            println("                        EXECUTE ACTIONS   "+round+"                                  ")
             println("------------------------------------------------------------------------------")
             executerLesAction.collect().foreach(println)
 
@@ -387,12 +389,13 @@ object Main extends App {
             )
 
             println("------------------------------------------------------------------------------")
-            println("                        RECEPTION ACTION                                     ")
+            println("                        RECEPTION ACTION     "+round+"                                ")
             println("------------------------------------------------------------------------------")
             graph.vertices.collect().foreach(println)
 
             //val res2 = graph.vertices.take(graph.numVertices.toInt)
             graph = graph.subgraph(vpred = (id, attr) => attr.getPDV()> 0)
+              round+=1
           }
         }
 
